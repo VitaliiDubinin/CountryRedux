@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,28 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+.search {
+  text-align: center;
+}
+
+h3 {
+  color: red;
+}
+h1 {
+  color: blue;
+}
+
+.card {
+  box-shadow: 0 0 5px rgb(92, 92, 92);
+  border-radius: 5px;
+  background: white;
+  color: black;
+  cursor: pointer;
+  height: auto;
+  /* height: 10rem; */
+  width: 15rem;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 2.4rem;
 }
