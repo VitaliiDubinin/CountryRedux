@@ -17,10 +17,12 @@ const Countries = () => {
     Promise.all([getCountry()]).then(function (results) {
       // const recipesData = results[0];
       const countriesData = results[0];
-      console.log(countriesData);
+      // console.log(countriesData);
+      // console.log(countriesData.data);
+
       setCountry(countriesData.data);
-      console.log(countriesData.data);
-      console.log(country);
+      // console.log(countriesData.data.indexOf());
+      // console.log(country);
       setLoading(false);
     });
   }, []);
@@ -49,9 +51,12 @@ const Countries = () => {
         <div className="cards">
           {/* {countryFilter.map((scount) => ( */}
           {countryFilter.map((scount) => (
-            // (<h1>{scount.id}</h1>),
-
-            <CountryCard key={scount.id} data={scount} {...scount} />
+            // (<h1>{scount.fifa}</h1>),
+            // (<h1>{Object.values(data || {})}</h1>),
+            <CountryCard key={countryFilter.indexOf(scount)} data={scount} {...scount} />
+            // <h3>
+            //   {scount.capital} {scount.area} {countryFilter.indexOf(scount)}
+            // </h3>
 
             // <div>
             //   <h1 key={scount.id} {...scount} />

@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // const CountryCard = ({ name, desc, image, data, country, add, likes, countries }) => {
-const CountryCard = ({ capital, flag, name, languages, fifa, population, currencies, contpop, idnum, data, country }) => {
+const CountryCard = ({ capital, flag, name, languages, population, currencies, contpop, idnum, data }) => {
   if (population >= 1000000) {
-    contpop = (population / 1000000).toFixed(1) + " Million";
+    contpop = (population / 1000000).toFixed(1) + " M";
   } else {
     contpop = (population / 1000).toFixed(1) + " K";
   }
@@ -16,19 +16,19 @@ const CountryCard = ({ capital, flag, name, languages, fifa, population, currenc
       <h2>{name.official}</h2>
       <h2>{capital}</h2>
       <h1>{idnum}</h1>
-      <h2>
+      <h1>
         LANGUAGE(S):{" "}
         {Object.values(languages || {}).map((value, i) => (
           <span key={i}>{(i ? ", " : "") + value}</span>
         ))}
-      </h2>
-      <h2>POPULATION: {contpop}</h2>
-      <h2>
+      </h1>
+      <h1>POPULATION: {contpop}</h1>
+      <h1>
         CURRENCIE(S):{" "}
         {Object.values(currencies || {}).map((value, i) => (
           <span key={i}>{(i ? ", " : "") + value.name + " (" + value.symbol + ")"}</span>
         ))}
-      </h2>
+      </h1>
 
       {/* <p>{fifa}</p> */}
       {/* <img src={image} alt={name} />
@@ -40,7 +40,8 @@ const CountryCard = ({ capital, flag, name, languages, fifa, population, currenc
       <div className="likes">{likes}</div> */}
 
       <div>
-        <Link to={name.common} state={{ data: data, country: country }}>
+        {/* <Link to={name.common} state={{ data: data, country: country }}> */}
+        <Link to={name.common} state={{ data: data }}>
           See more
         </Link>
       </div>

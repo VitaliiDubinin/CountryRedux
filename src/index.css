@@ -20,6 +20,7 @@ h3 {
 }
 h1 {
   color: blue;
+  font-size: 1rem;
 }
 
 .card {
@@ -34,4 +35,27 @@ h1 {
   text-align: center;
   padding: 1rem;
   margin-bottom: 2.4rem;
+}
+
+.singlecard {
+  box-shadow: 0 0 5px rgb(92, 92, 92);
+  border-radius: 5px;
+  background: white;
+  color: black;
+  cursor: pointer;
+  height: auto;
+  /* height: 10rem; */
+  width: 35rem;
+  text-align: left;
+  padding: 1rem;
+  margin-bottom: 2.4rem;
+}
+.singcardimage {
+  height: auto;
+  width: 15rem;
+}
+
+img {
+  height: 150px;
+  width: 100%;
 }
