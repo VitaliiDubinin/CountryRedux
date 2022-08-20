@@ -17,8 +17,8 @@ const Countries = () => {
     Promise.all([getCountry()]).then(function (results) {
       // const recipesData = results[0];
       const countriesData = results[0];
-      // console.log(countriesData);
-      // console.log(countriesData.data);
+      console.log(countriesData);
+      console.log(countriesData.data);
 
       setCountry(countriesData.data);
       // console.log(countriesData.data.indexOf());
