@@ -4,8 +4,19 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 // import Weatherwindow from "./Weatherwindow";
 // import vidjet from "./vidjet";
+// const apiHead = "https://source.unsplash.com/";
+const randApiHead = "https://source.unsplash.com/500x400/?";
+// const randApiHead = "https://www.pexels.com/search/";
+const count_words = (word_array) => {
+  let total = 0;
+  word_array.forEach(() => {
+    total++;
+  });
+  return total;
+};
 
 const CountrySingle = () => {
+  let randImage = randApiHead;
   const location = useLocation();
   const country = location.state.data;
 
@@ -103,29 +114,53 @@ const CountrySingle = () => {
             // return res.data;
             // console.log(res.data);
             // console.log(capweather);
+            // let randImage = randApiHead;
+            // if (count_words(res.data.name.split()) > 1) {
+            //   const name_array = res.data.name.split();
+            //   console.log(count_words(name_array));
+            //   const total_words = count_words(name_array);
+            //   const noun = name_array[total_words - 1];
+            //   randImage += noun;
+            //   console.log(randImage);
+            // } else {
+            //   randImage += res.data.name;
+            //   console.log(randImage);
+            // }
+            let randImage = randApiHead + res.data.name + "_views";
+            console.log(randImage);
           });
       });
   }, []);
 
   return (
     <div className="singlecard">
-      <h1>{country.name.common}</h1>
-      <h1>{country.capital}</h1>
-      <h1>{country.cca2}</h1>
-      <h1>{capgeo.lat}</h1>
-      <h1>{capgeo.lon}</h1>
-      <h1>{capweather.name}</h1>
-      <h1>{capweather.visibility}</h1>
+      {/* <h1>{country.name.common}</h1> */}
+      <p className="capital">
+        Weather in <span className="capname">{country.capital}</span>
+      </p>
+      {/* <h1>{country.cca2}</h1> */}
+      {/* <h1>{capgeo.lat}</h1> */}
+      {/* <h1>{capgeo.lon}</h1> */}
+      {/* <h1>{capweather.name}</h1> */}
+      {/* <h1>{capweather.visibility}</h1> */}
       {/* <Weatherwindow key={capweather.id} data={capweather} {...capweather}></Weatherwindow> */}
       {/* <Weatherwindow key={capweather.id} data={capweather}></Weatherwindow> */}
       {/* <h1>{...capweather}</h1> */}
-      <h1>{capparam.temp}</h1>
-      <h1>{capparam.feels_like}</h1>
-      <h1>{capparam.humidity}</h1>
+      <p className="languages">
+        Temperature: <span className="capname">{capparam.temp}</span>
+      </p>
+      <p className="languages">
+        Temp. feels like: <span className="capname">{capparam.feels_like}</span>
+      </p>
+      <p className="languages">
+        Humidity: <span className="capname">{capparam.humidity}</span>
+      </p>
+
       {/* <h1>{capweather.main.temp}</h1>
       <h1>{capweather.main.feels_like}</h1>
       <h1>{capweather.main.humidity}</h1> */}
-      <img className="flagsq" src={country.flags.png} alt={country.name.common} />
+      {/* <img className="flagsq" src={country.flags.png} alt={country.name.common} /> */}
+      <img className="flagsq" src={randImage} alt={country.name.common} />
       {/* <div id="openweathermap-widget-15">weather window</div> */}
       {/* <script async="" charset="utf-8" src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js"></script>
       <script src="widjet.js" type="text/javascript"></script> */}

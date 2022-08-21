@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import CountryCard from "./CountryCard";
 import axios from "axios";
+import "bootstrap";
+// import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const Countries = () => {
   const [country, setCountry] = useState([]);
@@ -48,7 +51,11 @@ const Countries = () => {
           {/* <h3>{search}</h3> */}
         </div>
 
+        {/* <div className="cards"> */}
+        {/* <div className="row"> */}
         <div className="cards">
+          {/* <div className="container"> */}
+          {/* <div className="col-md-4 col-sm-6 col-xs-12"> */}
           {/* {countryFilter.map((scount) => ( */}
           {countryFilter.map((scount) => (
             // (<h1>{scount.fifa}</h1>),
@@ -63,6 +70,8 @@ const Countries = () => {
             // </div>
           ))}
         </div>
+        {/* </div> */}
+        {/* </div> */}
         {/* <div>
           <CountryCard key={countries.id} data={countries} {...countries} />
         </div> */}

@@ -11,6 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: Roboto, Rubik; */
+}
 .search {
   text-align: center;
 }
@@ -58,4 +65,104 @@ h1 {
 img {
   height: 150px;
   width: 100%;
+}
+
+/* .skills-wrap {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding: 25px 35px;
+  position: relative;
+  transition: all 0.5s ease 0s;
+  margin-top: 20px;
+  z-index: 9;
+} */
+
+/* .row.no-gutters [class*="col-"] {
+  padding-left: 0;
+  padding-right: 0;
+} */
+
+/* @media screen and (max-width: 295px) {
+  .service-wrap p {
+    font-size: 13px;
+  }
+} */
+
+/* @media screen and (max-width: 750px) {
+  .slider .welText {
+    display: none;
+  }
+
+  .slider .typed-cursor {
+    display: none;
+  }
+
+  .slider a.btn1,
+  a.btn2 {
+    display: block;
+    width: 100%;
+  }
+} */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  color: black;
+}
+.card {
+  box-shadow: 0 0 5px rgb(92, 92, 92);
+  border-radius: 5px;
+  background: white;
+  color: black;
+  cursor: pointer;
+  height: auto;
+  /* height: 10rem; */
+  width: 15rem;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 2.4rem;
+}
+
+.flagsq {
+  width: 14rem;
+  height: 14rem;
+  /* border-radius: 2rem;
+  border-color: blue;
+  border-style: solid;
+  border-width: 0.1rem; */
+  background-size: cover;
+  position: relative;
+  top: 0rem;
+  left: 2rem;
+}
+
+.flag {
+  font-size: 8rem;
+}
+.comname {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: brown;
+}
+.ofname {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  /* padding-bottom: 0.5rem; */
+}
+.capital {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  /* padding-bottom: 0.5rem; */
+}
+
+.capname {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: brown;
+}
+.languages {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: blue;
 }

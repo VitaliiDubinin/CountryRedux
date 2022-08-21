@@ -7,6 +7,10 @@ import CountrySingle from "./components/CountrySingle";
 import Layout from "./pages/Layout";
 import Home from "./components/Home";
 import Countries from "./components/Countries";
+import "bootstrap";
+// import "../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 // import AddRecipe from "./components/AddRecipe";
 // import AddRecForm from "./components/AddRecForm";
 

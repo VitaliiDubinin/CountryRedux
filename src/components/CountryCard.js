@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "bootstrap";
+// import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 // const CountryCard = ({ name, desc, image, data, country, add, likes, countries }) => {
 const CountryCard = ({ capital, flag, name, languages, population, currencies, contpop, idnum, data }) => {
@@ -11,24 +14,28 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
 
   return (
     <div className="card">
-      <p>{flag}</p>
-      <h2>{name.common}</h2>
-      <h2>{name.official}</h2>
-      <h2>{capital}</h2>
-      <h1>{idnum}</h1>
-      <h1>
+      {/* <div className="col-md-4 col-sm-6 col-xs-12">
+      <div class="skills-wrap text-center"> */}
+      <p className="flag">{flag}</p>
+      <p className="comname">{name.common}</p>
+      <p className="ofname">{name.official}</p>
+      <p className="capital">
+        Capital: <span className="capname">{capital}</span>
+      </p>
+      {/* <h1>{idnum}</h1> */}
+      <p className="languages">
         LANGUAGE(S):{" "}
         {Object.values(languages || {}).map((value, i) => (
           <span key={i}>{(i ? ", " : "") + value}</span>
         ))}
-      </h1>
-      <h1>POPULATION: {contpop}</h1>
-      <h1>
+      </p>
+      <p className="languages">POPULATION: {contpop}</p>
+      <p className="languages">
         CURRENCIE(S):{" "}
         {Object.values(currencies || {}).map((value, i) => (
           <span key={i}>{(i ? ", " : "") + value.name + " (" + value.symbol + ")"}</span>
         ))}
-      </h1>
+      </p>
 
       {/* <p>{fifa}</p> */}
       {/* <img src={image} alt={name} />
@@ -44,6 +51,7 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
         <Link to={name.common} state={{ data: data }}>
           See more
         </Link>
+        {/* </div> */}
       </div>
     </div>
   );
