@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "bootstrap";
-// import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Card, CardHeader, CardBody, CardFooter, Button, Text } from "grommet";
+import { Favorite, ShareOption } from "grommet-icons";
 
-// const CountryCard = ({ name, desc, image, data, country, add, likes, countries }) => {
 const CountryCard = ({ capital, flag, name, languages, population, currencies, contpop, idnum, data }) => {
   if (population >= 1000000) {
     contpop = (population / 1000000).toFixed(1) + " M";
@@ -13,15 +11,30 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
   }
 
   return (
-    <div className="card">
-      {/* <div className="col-md-4 col-sm-6 col-xs-12">
-      <div class="skills-wrap text-center"> */}
-      <p className="flag">{flag}</p>
-      <p className="comname">{name.common}</p>
+    // <div className="card">
+    <Card direction="column" height="35rem" width="30rem" background="light-1" border={{ color: "brand", size: "small" }} gap="xsmall">
+      <CardHeader alignContent="start" alignSelf="end" border={{ color: "brand", size: "small" }}>
+        {" "}
+        <Text size="5rem"> {flag}</Text>
+      </CardHeader>
+      {/* <p className="flag">{flag}</p> */}
+      <CardBody pad="medium">
+        {" "}
+        {name.common}
+        {name.official}
+        {/* <p className="ofname">{name.official}</p> */}
+        {/* <p className="capital"> */} Capital: <span className="capname">{capital}</span>
+        {/* </p> */}
+      </CardBody>
+      <CardFooter pad={{ horizontal: "small" }} background="light-2">
+        <Button icon={<Favorite color="red" />} hoverIndicator />
+        <Button icon={<ShareOption color="plain" />} hoverIndicator />
+      </CardFooter>
+      {/* <p className="comname">{name.common}</p>
       <p className="ofname">{name.official}</p>
       <p className="capital">
         Capital: <span className="capname">{capital}</span>
-      </p>
+      </p> */}
       {/* <h1>{idnum}</h1> */}
       <p className="languages">
         LANGUAGE(S):{" "}
@@ -37,23 +50,13 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
         ))}
       </p>
 
-      {/* <p>{fifa}</p> */}
-      {/* <img src={image} alt={name} />
-      <img className="flag" src={country.flags.png} alt={country.name.common} /> */}
-
-      {/* <span onClick={add} className="material-icons likeBut">
-        favorite
-      </span>
-      <div className="likes">{likes}</div> */}
-
       <div>
-        {/* <Link to={name.common} state={{ data: data, country: country }}> */}
         <Link to={name.common} state={{ data: data }}>
           See more
         </Link>
-        {/* </div> */}
       </div>
-    </div>
+    </Card>
+    // </div>
   );
 };
 

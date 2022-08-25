@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import CountryCard from "./CountryCard";
 import axios from "axios";
-import "bootstrap";
+// import "bootstrap";
 // import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const Countries = () => {
   const [country, setCountry] = useState([]);
@@ -45,36 +45,15 @@ const Countries = () => {
   } else {
     return (
       <>
-        {/* <p>Body....</p> */}
         <div className="search">
           <input type="text" placeholder="🔍" onChange={searchHandler} />
-          {/* <h3>{search}</h3> */}
         </div>
 
-        {/* <div className="cards"> */}
-        {/* <div className="row"> */}
         <div className="cards">
-          {/* <div className="container"> */}
-          {/* <div className="col-md-4 col-sm-6 col-xs-12"> */}
-          {/* {countryFilter.map((scount) => ( */}
           {countryFilter.map((scount) => (
-            // (<h1>{scount.fifa}</h1>),
-            // (<h1>{Object.values(data || {})}</h1>),
             <CountryCard key={countryFilter.indexOf(scount)} data={scount} {...scount} />
-            // <h3>
-            //   {scount.capital} {scount.area} {countryFilter.indexOf(scount)}
-            // </h3>
-
-            // <div>
-            //   <h1 key={scount.id} {...scount} />
-            // </div>
           ))}
         </div>
-        {/* </div> */}
-        {/* </div> */}
-        {/* <div>
-          <CountryCard key={countries.id} data={countries} {...countries} />
-        </div> */}
       </>
     );
   }
