@@ -22,8 +22,8 @@ const theme = {
     },
     font: {
       family: "Roboto",
-      size: "1.8rem",
-      height: "3rem",
+      size: "1.5rem",
+      height: "2rem",
     },
   },
 };
