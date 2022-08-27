@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CountryCard from "./CountryCard";
 import axios from "axios";
+import { Grid } from "grommet";
 // import "bootstrap";
 // import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
 // import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -49,11 +50,11 @@ const Countries = () => {
           <input type="text" placeholder="🔍" onChange={searchHandler} />
         </div>
 
-        <div className="cards">
+        <Grid columns="medium" gap="small">
           {countryFilter.map((scount) => (
             <CountryCard key={countryFilter.indexOf(scount)} data={scount} {...scount} />
           ))}
-        </div>
+        </Grid>
       </>
     );
   }
