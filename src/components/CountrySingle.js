@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-// import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Box, Card, CardBody, Image, Text, Grid, ResponsiveContext } from "grommet";
 // import Weatherwindow from "./Weatherwindow";
 // import vidjet from "./vidjet";
 // const apiHead = "https://source.unsplash.com/";
@@ -29,6 +29,8 @@ const CountrySingle = () => {
   const [capparam, setCapparam] = useState([]);
   // const [capname, setCapname] = useState();
   const [loading, setLoading] = useState(false);
+
+  const size = useContext(ResponsiveContext);
 
   // setCapname(country.capital);
   // console.log(capname);
@@ -133,38 +135,74 @@ const CountrySingle = () => {
   }, []);
 
   return (
-    <div className="singlecard">
-      {/* <h1>{country.name.common}</h1> */}
-      <p className="capital">
+    <Box
+      background="background"
+      justify="center"
+      align="center"
+      pad={{
+        // horizontal: !["xsmall", "small"].includes(size) ? "xlarge" : "medium",
+        // horizontal: "xlarge",
+        vertical: "xlarge",
+      }}
+      flex={false}
+    >
+      {/* <Grid columns={!["xsmall", "small"].includes(size) ? "medium" : "100%"} rows={[["auto", "full"]]} gap="medium"> */}
+      <Card background="background-front" width="medium">
+        <Box height="small" width="medium">
+          <Image className="flagsq" src={randImage} alt={country.name.common} fit="cover" />
+        </Box>
+        <CardBody gap="small">
+          <Box gap="medium">
+            {" "}
+            <Text color="text-strong" size="xxlarge" weight="bold">
+              Weather in <span className="capname">{country.capital}</span>
+            </Text>
+            <Text color="text-strong" size="2rem" height="3rem">
+              {" "}
+              Temperature: <span className="capname">{capparam.temp}</span>
+            </Text>
+            <Text color="text-strong" size="2rem" height="3rem">
+              {" "}
+              Temp. feels like: <span className="capname">{capparam.feels_like}</span>
+            </Text>
+            <Text color="text-strong" size="2rem" height="3rem">
+              {" "}
+              Humidity:<span className="capname">{capparam.humidity}</span>
+            </Text>
+          </Box>
+        </CardBody>
+        {/* <h1>{country.name.common}</h1> */}
+        {/* <p className="capital">
         Weather in <span className="capname">{country.capital}</span>
-      </p>
-      {/* <h1>{country.cca2}</h1> */}
-      {/* <h1>{capgeo.lat}</h1> */}
-      {/* <h1>{capgeo.lon}</h1> */}
-      {/* <h1>{capweather.name}</h1> */}
-      {/* <h1>{capweather.visibility}</h1> */}
-      {/* <Weatherwindow key={capweather.id} data={capweather} {...capweather}></Weatherwindow> */}
-      {/* <Weatherwindow key={capweather.id} data={capweather}></Weatherwindow> */}
-      {/* <h1>{...capweather}</h1> */}
-      <p className="languages">
+      </p> */}
+        {/* <h1>{country.cca2}</h1> */}
+        {/* <h1>{capgeo.lat}</h1> */}
+        {/* <h1>{capgeo.lon}</h1> */}
+        {/* <h1>{capweather.name}</h1> */}
+        {/* <h1>{capweather.visibility}</h1> */}
+        {/* <Weatherwindow key={capweather.id} data={capweather} {...capweather}></Weatherwindow> */}
+        {/* <Weatherwindow key={capweather.id} data={capweather}></Weatherwindow> */}
+        {/* <h1>{...capweather}</h1> */}
+        {/* <p className="languages">
         Temperature: <span className="capname">{capparam.temp}</span>
-      </p>
-      <p className="languages">
+      </p> */}
+        {/* <p className="languages">
         Temp. feels like: <span className="capname">{capparam.feels_like}</span>
-      </p>
-      <p className="languages">
+      </p> */}
+        {/* <p className="languages">
         Humidity: <span className="capname">{capparam.humidity}</span>
-      </p>
-
-      {/* <h1>{capweather.main.temp}</h1>
+      </p> */}
+        {/* <h1>{capweather.main.temp}</h1>
       <h1>{capweather.main.feels_like}</h1>
       <h1>{capweather.main.humidity}</h1> */}
-      {/* <img className="flagsq" src={country.flags.png} alt={country.name.common} /> */}
-      <img className="flagsq" src={randImage} alt={country.name.common} />
-      {/* <div id="openweathermap-widget-15">weather window</div> */}
-      {/* <script async="" charset="utf-8" src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js"></script>
+        {/* <img className="flagsq" src={country.flags.png} alt={country.name.common} /> */}
+        {/* <img className="flagsq" src={randImage} alt={country.name.common} /> */}
+        {/* <div id="openweathermap-widget-15">weather window</div> */}
+        {/* <script async="" charset="utf-8" src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js"></script>
       <script src="widjet.js" type="text/javascript"></script> */}
-    </div>
+      </Card>
+      {/* </Grid> */}
+    </Box>
   );
 };
 export default CountrySingle;
