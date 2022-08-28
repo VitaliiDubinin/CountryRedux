@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { ItemCountList } from '../components';
+import { useEffect, useState } from "react";
+import { ItemCountList } from "./ItemCountList";
 
 // eslint-disable-next-line max-len
-const MOCK_FIRMWARE = require('../../../../data/mockData/firmware-bundles.json');
-const MOCK_SERVERS = require('../../../../data/mockData/servers.json');
+const MOCK_FIRMWARE = require("./firmware-bundles.json");
+const MOCK_SERVERS = require("./servers.json");
 
 export const FirmwareBaselines = ({ ...rest }) => {
-  const firmware = MOCK_FIRMWARE['firmware-bundles'].items;
+  const firmware = MOCK_FIRMWARE["firmware-bundles"].items;
   const servers = MOCK_SERVERS.servers.items;
   const [baselineCounts, setBaselineCounts] = useState();
 
@@ -24,10 +24,8 @@ export const FirmwareBaselines = ({ ...rest }) => {
         });
       });
 
-      servers.forEach(server => {
-        const result = nextbaselineCounts.find(
-          bundle => bundle.selfUri === server.firmwareBundleUri,
-        );
+      servers.forEach((server) => {
+        const result = nextbaselineCounts.find((bundle) => bundle.selfUri === server.firmwareBundleUri);
         if (result) result.count += 1;
       });
 
@@ -46,11 +44,11 @@ export const FirmwareBaselines = ({ ...rest }) => {
       title="Firmware Baselines"
       items={baselineCounts}
       menuItems={[
-        { label: 'Move', onClick: () => {} },
-        { label: 'Share', onClick: () => {} },
+        { label: "Move", onClick: () => {} },
+        { label: "Share", onClick: () => {} },
       ]}
       defaultItemProps={{
-        pad: { vertical: 'small', right: 'small' },
+        pad: { vertical: "small", right: "small" },
       }}
       {...rest}
     />

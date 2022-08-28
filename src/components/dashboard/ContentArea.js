@@ -1,27 +1,16 @@
-import PropTypes from 'prop-types';
-import { Box, Text, ThemeContext } from 'grommet';
-import { Hpe } from 'grommet-icons';
-import { aries } from '../../../../../themes/aries';
+import PropTypes from "prop-types";
+import { Box, Text, ThemeContext } from "grommet";
+import { Hpe } from "grommet-icons";
+import { aries } from "./aries";
 
-export const ContentArea = ({
-  background = 'background-front',
-  border,
-  children,
-  icon,
-  pad = 'small',
-  round = 'xxsmall',
-  title,
-  ...rest
-}) => (
+export const ContentArea = ({ background = "background-front", border, children, icon, pad = "small", round = "xxsmall", title, ...rest }) => (
   // If the ThemeContext is scaled, as it can be in the mock browser, we do
   // not want the scaled theme to be applied to ContentArea. This resets
   // to scale = 1.
   <ThemeContext.Extend value={aries}>
     <Box
       background={background}
-      border={
-        border === true ? { color: 'border-strong', style: 'dashed' } : border
-      }
+      border={border === true ? { color: "border-strong", style: "dashed" } : border}
       flex={false}
       pad={pad}
       round={round}

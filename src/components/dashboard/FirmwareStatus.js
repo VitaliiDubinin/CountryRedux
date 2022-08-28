@@ -1,32 +1,33 @@
-import { useEffect, useState } from 'react';
-import { InProgress, StatusWarning, StatusGood } from 'grommet-icons';
-import { Measure, StatusBar } from '../components';
+import { useEffect, useState } from "react";
+import { InProgress, StatusWarning, StatusGood } from "grommet-icons";
+import { Measure } from "./Measure";
+import { StatusBar } from "./StatusBar";
 
-const MOCK_DATA = require('../../../../data/mockData/firmware-bundles.json');
+const MOCK_DATA = require("./firmware-bundles.json");
 
 const FIRMWARE_MAP = {
   Failed: {
-    label: 'Failed',
+    label: "Failed",
     icon: <StatusWarning />,
   },
-  'In Progress': {
-    label: 'In Progress',
+  "In Progress": {
+    label: "In Progress",
     icon: <InProgress />,
   },
   Completed: {
-    label: 'Completed',
+    label: "Completed",
     icon: <StatusGood />,
   },
 };
 
 export const FirmwareStatus = ({ ...rest }) => {
-  const data = MOCK_DATA['firmware-counts'].counts;
+  const data = MOCK_DATA["firmware-counts"].counts;
   const [firmwareStatus, setFirmwareStatus] = useState(undefined);
 
   useEffect(() => {
     if (data) {
       const nextStatus = { ...FIRMWARE_MAP };
-      Object.keys(nextStatus).forEach(key => {
+      Object.keys(nextStatus).forEach((key) => {
         nextStatus[key].count = data[key];
       });
       setFirmwareStatus(nextStatus);
@@ -37,13 +38,13 @@ export const FirmwareStatus = ({ ...rest }) => {
     <StatusBar
       title="Firmware Status"
       menuItems={[
-        { label: 'Move', onClick: () => {} },
-        { label: 'Share', onClick: () => {} },
+        { label: "Move", onClick: () => {} },
+        { label: "Share", onClick: () => {} },
       ]}
       {...rest}
     >
       {firmwareStatus &&
-        Object.keys(firmwareStatus).map(key => {
+        Object.keys(firmwareStatus).map((key) => {
           const status = firmwareStatus[key];
           return (
             <Measure
@@ -54,7 +55,7 @@ export const FirmwareStatus = ({ ...rest }) => {
                 // eslint-disable-next-line no-alert
                 alert(
                   // eslint-disable-next-line max-len
-                  `${status.count} ${status.label} severs selected.\n\nDepending on the context, clicking a dashboard measure would act like a button and navigate the user to a detailed view for the selected.`,
+                  `${status.count} ${status.label} severs selected.\n\nDepending on the context, clicking a dashboard measure would act like a button and navigate the user to a detailed view for the selected.`
                 );
               }}
             />

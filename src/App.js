@@ -7,6 +7,7 @@ import CountrySingle from "./components/CountrySingle";
 import Layout from "./pages/Layout";
 import Home from "./components/Home";
 import Countries from "./components/Countries";
+import TwoColumnDashboard from "./components/dashboard/TwoColumnDashboard";
 // import "bootstrap";
 // import "../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -29,7 +30,8 @@ const theme = {
 };
 const RouterWrapper = (props) => {
   const params = useParams();
-  return <CountrySingle params={params} {...props} />;
+  // return <CountrySingle params={params} {...props} />;
+  return <TwoColumnDashboard params={params} {...props} />;
 };
 
 function App() {
