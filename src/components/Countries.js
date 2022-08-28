@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import CountryCard from "./CountryCard";
 import axios from "axios";
-import { Grid } from "grommet";
+import { Grid, WorldMap, TextInput, Box } from "grommet";
+import { Search as SearchIcon } from "grommet-icons";
+import styled from "styled-components";
 // import "bootstrap";
 // import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
 // import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+const StyledTextInput = styled(TextInput).attrs(() => ({
+  "aria-labelledby": "search-icon",
+}))``;
 
 const Countries = () => {
   const [country, setCountry] = useState([]);
@@ -46,11 +51,49 @@ const Countries = () => {
   } else {
     return (
       <>
-        <div className="search">
+        <WorldMap
+          color="neutral-4"
+          continents={[
+            {
+              name: "Africa",
+              // color: "light-3",
+              color: "neutral-4",
+              onClick: (name) => {},
+            },
+          ]}
+          onSelectPlace={(lat, lon) => {}}
+          places={[
+            {
+              // name: "Sydney",
+              // location: [-33.8830555556, 151.216666667],
+              name: "Helsinki",
+              location: [60.1718, 24.9414],
+              color: "accent-3",
+              onClick: (name) => {},
+            },
+          ]}
+          selectColor="accent-2"
+        />
+        {/* <div className="search">
           <input type="text" placeholder="🔍" onChange={searchHandler} />
-        </div>
+        </div> */}
+
+        <Box background="background-contrast" round="xsmall">
+          <StyledTextInput
+            icon={<SearchIcon id="search-icon" color="placeholder" />}
+            placeholder="Search"
+            // plain
+            reverse
+            value={search}
+            onChange={searchHandler}
+            type="search"
+          />
+        </Box>
 
         <Grid columns="medium" gap="small">
+          {/* <div className="search"> */}
+          {/* <input type="text" placeholder="🔍" onChange={searchHandler} /> */}
+          {/* </div> */}
           {countryFilter.map((scount) => (
             <CountryCard key={countryFilter.indexOf(scount)} data={scount} {...scount} />
           ))}

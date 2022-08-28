@@ -114,8 +114,8 @@ const CountrySingle = () => {
             // setCapweather(res.data);
             // return capweather;
             // return res.data;
-            // console.log(res.data);
-            // console.log(capweather);
+            console.log(res.data);
+            console.log(capweather);
             // let randImage = randApiHead;
             // if (count_words(res.data.name.split()) > 1) {
             //   const name_array = res.data.name.split();
