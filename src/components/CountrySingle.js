@@ -5,8 +5,10 @@ import { Box, Card, CardBody, Image, Text, Grid, ResponsiveContext } from "gromm
 // import Weatherwindow from "./Weatherwindow";
 // import vidjet from "./vidjet";
 // const apiHead = "https://source.unsplash.com/";
+// const randApiHead = "https://source.unsplash.com/random/500x400/?";
 const randApiHead = "https://source.unsplash.com/500x400/?";
 // const randApiHead = "https://www.pexels.com/search/";
+// const randApiHead = "https://pixabay.com/photos/sun-has-flower-echinacea-daisy-7391959/";
 const count_words = (word_array) => {
   let total = 0;
   word_array.forEach(() => {
@@ -104,6 +106,7 @@ const CountrySingle = () => {
             // setCapweather(capgeo);
             setGeotoweather(capgeo);
             console.log(capgeo);
+            console.log(capgeo.name);
             console.log(geotoweather);
             setCapweather(res.data);
             setCapparam(res.data.main);
@@ -128,7 +131,14 @@ const CountrySingle = () => {
             //   randImage += res.data.name;
             //   console.log(randImage);
             // }
-            let randImage = randApiHead + res.data.name + "_views";
+            // let randImage = randApiHead + res.data.name + "_views";
+            // let randImage = randApiHead + "one day in" + res.data.name;
+            // let randImage = randApiHead + "season trip to" + res.data.name;
+            // let randImage = randApiHead + "weather in" + res.data.name;
+            // let randImage = randApiHead + "trip%20to%20" + capgeo.name + "%20street";
+            // let randImage = randApiHead + "season%20trip%20to%20" + capgeo.name;
+            let randImage = randApiHead + "views%20of%20" + capgeo.name;
+            // let randImage = randApiHead + capgeo.name + "%20from%20helicopter";
             console.log(randImage);
           });
       });

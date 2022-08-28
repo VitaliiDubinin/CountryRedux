@@ -1,42 +1,28 @@
-import React, { useContext, useState } from 'react';
-import PropTypes from 'prop-types';
-import {
-  Avatar,
-  Box,
-  Button,
-  Header,
-  Footer,
-  Layer,
-  Nav,
-  ResponsiveContext,
-  Text,
-} from 'grommet';
-import { Aruba, FormClose, Menu } from 'grommet-icons';
+import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
+import { Avatar, Box, Button, Header, Footer, Layer, Nav, ResponsiveContext, Text } from "grommet";
+import { Aruba, FormClose, Menu } from "grommet-icons";
 
 export const MenuLayer = () => {
   const size = useContext(ResponsiveContext);
   const [showLayer, setShowLayer] = useState(false);
 
   const pad = {
-    horizontal: 'medium',
-    vertical: 'small',
+    horizontal: "medium",
+    vertical: "small",
   };
   return (
     <>
       <Button icon={<Menu />} onClick={() => setShowLayer(true)} />
       {showLayer && (
         <Layer
-          full={!['xsmall', 'small'].includes(size) ? 'vertical' : true}
+          full={!["xsmall", "small"].includes(size) ? "vertical" : true}
           modal={false}
           onClickOutside={() => setShowLayer(false)}
           onEsc={() => setShowLayer(false)}
-          position={!['xsmall', 'small'].includes(size) ? 'left' : undefined}
+          position={!["xsmall", "small"].includes(size) ? "left" : undefined}
         >
-          <Box
-            fill="vertical"
-            width={!['xsmall', 'small'].includes(size) ? 'medium' : undefined}
-            elevation="large"
-          >
+          <Box fill="vertical" width={!["xsmall", "small"].includes(size) ? "medium" : undefined} elevation="large">
             <Header pad={pad}>
               <Button
                 a11yTitle={`You are in a navigation layer. To close this layer, 
@@ -60,25 +46,15 @@ export const MenuLayer = () => {
 };
 
 const SidebarHeader = () => (
-  <Box
-    align="start"
-    border={{ color: 'border-weak', side: 'bottom' }}
-    pad={{ top: 'small', bottom: 'medium' }}
-    gap="medium"
-    flex={false}
-  >
+  <Box align="start" border={{ color: "border-weak", side: "bottom" }} pad={{ top: "small", bottom: "medium" }} gap="medium" flex={false}>
     <Box gap="xsmall">
-      <Avatar
-        background="status-unknown"
-        flex={false}
-        margin={{ bottom: 'xsmall' }}
-      >
-        <Text size="large">A</Text>
+      <Avatar background="status-unknown" flex={false} margin={{ bottom: "xsmall" }}>
+        <Text size="large">V D</Text>
       </Avatar>
       <Text color="text-strong" weight="bold">
-        AT&T Corporation
+        BC Helsinki React222K
       </Text>
-      <Text size="small">ID: 0a7141c332ec4c4aae04aa4b8fe59deb</Text>
+      <Text size="small">ID: S2200119</Text>
     </Box>
     <Button label="Switch Account" secondary />
   </Box>
@@ -104,9 +80,9 @@ NavButton.propTypes = {
 };
 
 const SidebarFooter = () => (
-  <Footer pad={{ bottom: 'small' }}>
+  <Footer pad={{ bottom: "small" }}>
     <Box fill="horizontal" gap="medium">
-      <Box border={{ side: 'bottom' }} pad={{ bottom: 'xsmall' }}>
+      <Box border={{ side: "bottom" }} pad={{ bottom: "xsmall" }}>
         <Text size="xsmall">Last Visited</Text>
       </Box>
       <Button>
@@ -116,9 +92,9 @@ const SidebarFooter = () => (
           </Box>
           <Box>
             <Text weight="bold" color="text-strong" size="xsmall">
-              Aruba Network Manager
+              React advanced course
             </Text>
-            <Text size="xsmall">US West</Text>
+            <Text size="xsmall">BC Helsinki</Text>
           </Box>
         </Box>
       </Button>

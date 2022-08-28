@@ -18,10 +18,11 @@ export const DemoPageContent = () => {
   //   );
 
   return (
-    <Box align="center" gap="small">
-      <Text>This button is for demo purposes only.</Text>
-      <Button label="Sign In" primary onClick={() => setUser(defaultUser)} />
-    </Box>
+    <></>
+    // <Box align="center" gap="small">
+    //   <Text>This button is for demo purposes only.</Text>
+    //   <Button label="Sign In" primary onClick={() => setUser(defaultUser)} />
+    // </Box>
   );
 };
 
