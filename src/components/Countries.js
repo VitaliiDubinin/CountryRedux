@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext, useMemo } from "react";
 import CountryCard from "./CountryCard";
 import axios from "axios";
-import { Grid, WorldMap, TextInput, Box } from "grommet";
+import { Grid, WorldMap, TextInput, Box, Button, ResponsiveContext, Text } from "grommet";
 import { Search as SearchIcon } from "grommet-icons";
 import styled from "styled-components";
+import { defaultUser } from "./grom/UserContext";
+import { GlobalHeader } from "./grom/GlobalHeader";
+import { UserContext } from "./grom/UserContext";
 // import "bootstrap";
 // import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
 // import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -15,6 +18,15 @@ const Countries = () => {
   const [country, setCountry] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
+  const size = useContext(ResponsiveContext);
+  const [user, setUser] = useState(defaultUser);
+  const contextValue = useMemo(
+    () => ({
+      user,
+      setUser,
+    }),
+    [user]
+  );
 
   // const getRecipes = () => axios.get("http://localhost:3010/recipes");
   // const getRecipes = () => axios.get("https://my-json-server.typicode.com/vitaliidubinin/jsonforrecipeapp/recipes");
@@ -50,55 +62,64 @@ const Countries = () => {
     return <p>Loading....</p>;
   } else {
     return (
-      <>
-        <WorldMap
-          color="neutral-4"
-          continents={[
-            {
-              name: "Africa",
-              // color: "light-3",
-              color: "neutral-4",
-              onClick: (name) => {},
-            },
-          ]}
-          onSelectPlace={(lat, lon) => {}}
-          places={[
-            {
-              // name: "Sydney",
-              // location: [-33.8830555556, 151.216666667],
-              name: "Helsinki",
-              location: [60.1718, 24.9414],
-              color: "accent-3",
-              onClick: (name) => {},
-            },
-          ]}
-          selectColor="accent-2"
-        />
-        {/* <div className="search">
+      <UserContext.Provider value={contextValue}>
+        <Box width={{ max: "xxlarge" }} margin="auto" fill>
+          <GlobalHeader />
+          <Box overflow="auto">
+            <WorldMap
+              align="center"
+              color="neutral-4"
+              continents={[
+                {
+                  name: "Africa",
+                  // color: "light-3",
+                  color: "neutral-4",
+                  onClick: (name) => {},
+                },
+              ]}
+              onSelectPlace={(lat, lon) => {}}
+              places={[
+                {
+                  // name: "Sydney",
+                  // location: [-33.8830555556, 151.216666667],
+                  name: "Helsinki",
+                  location: [60.1718, 24.9414],
+                  color: "accent-3",
+                  onClick: (name) => {},
+                },
+              ]}
+              selectColor="accent-2"
+            />
+            {/* <div className="search">
           <input type="text" placeholder="🔍" onChange={searchHandler} />
         </div> */}
 
-        <Box background="background-contrast" round="xsmall">
-          <StyledTextInput
-            icon={<SearchIcon id="search-icon" color="placeholder" />}
-            placeholder="Search"
-            // plain
-            reverse
-            value={search}
-            onChange={searchHandler}
-            type="search"
-          />
-        </Box>
+            <Box background="background-contrast" round="xsmall" width="large">
+              <StyledTextInput
+                icon={<SearchIcon id="search-icon" color="placeholder" />}
+                placeholder="Search"
+                // plain
+                reverse
+                value={search}
+                onChange={searchHandler}
+                type="search"
+              />
+            </Box>
 
-        <Grid columns="medium" gap="small">
-          {/* <div className="search"> */}
-          {/* <input type="text" placeholder="🔍" onChange={searchHandler} /> */}
-          {/* </div> */}
+            {/* <Grid columns="medium" gap="small">
           {countryFilter.map((scount) => (
             <CountryCard key={countryFilter.indexOf(scount)} data={scount} {...scount} />
           ))}
-        </Grid>
-      </>
+        </Grid> */}
+
+            <Grid columns={!["xsmall", "small"].includes(size) ? "medium" : "100%"} rows={[["auto", "full"]]} gap="medium" fill>
+              {countryFilter.map((scount) => (
+                <CountryCard key={countryFilter.indexOf(scount)} data={scount} {...scount} />
+              ))}
+            </Grid>
+          </Box>
+        </Box>
+      </UserContext.Provider>
     );
   }
 };
