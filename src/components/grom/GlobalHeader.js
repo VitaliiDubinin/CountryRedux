@@ -19,7 +19,7 @@ export const GlobalHeader = () => {
         vertical: "small",
       }}
     >
-      <AppIdentity title="Service Name" brand="hpe" />
+      <AppIdentity title="Country App" brand="none" />
       {user && <HeaderNav />}
     </Header>
   );

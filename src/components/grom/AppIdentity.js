@@ -1,11 +1,15 @@
 import React, { forwardRef, useContext } from "react";
 import PropTypes from "prop-types";
 import { Button, Box, ResponsiveContext, Text } from "grommet";
-import { Aruba, Hpe } from "grommet-icons";
+import { Aruba, Hpe, Reactjs } from "grommet-icons";
 import { UserContext } from "./UserContext";
 import { MenuLayer } from "./MenuLayer";
 
 const brands = {
+  none: {
+    name: "",
+    logo: <Reactjs color="brand" />,
+  },
   hpe: {
     name: "HPE",
     logo: <Hpe color="brand" />,

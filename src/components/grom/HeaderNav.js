@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Avatar, Box, Button, DropButton, Nav, ResponsiveContext, Text } from "grommet";
 import { HelpOption, HomeRounded } from "grommet-icons";
 import { UserContext } from "./UserContext";
@@ -7,13 +9,17 @@ export const HeaderNav = () => {
   const size = useContext(ResponsiveContext);
   const { user } = useContext(UserContext);
   const [open, setOpen] = useState();
+  const navigate = useNavigate();
+  const navigateHome = () => {
+    navigate("/");
+  };
 
   return user ? (
     <Nav align="center" direction="row" gap="small">
       {!["xsmall", "small"].includes(size) && (
         <>
           <Button icon={<HelpOption />} a11yTitle="Help" title="Help" />
-          <Button icon={<HomeRounded />} a11yTitle="Home" title="Home" />
+          <Button icon={<HomeRounded />} a11yTitle="Home" title="Home" onClick={navigateHome} />
         </>
       )}
       <DropButton
@@ -45,7 +51,7 @@ const UserDetails = () => {
         {user && !user.image ? (
           <Avatar background="blue!" flex={false} size="large">
             <Text size="xlarge" color="text-strong">
-              JD
+              VD
             </Text>
           </Avatar>
         ) : (
