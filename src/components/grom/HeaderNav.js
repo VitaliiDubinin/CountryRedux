@@ -13,12 +13,15 @@ export const HeaderNav = () => {
   const navigateHome = () => {
     navigate("/");
   };
+  const navigateDashboard = () => {
+    navigate("/dashboard");
+  };
 
   return user ? (
     <Nav align="center" direction="row" gap="small">
       {!["xsmall", "small"].includes(size) && (
         <>
-          <Button icon={<HelpOption />} a11yTitle="Help" title="Help" />
+          <Button icon={<HelpOption />} a11yTitle="Help" title="Help" onClick={navigateDashboard} />
           <Button icon={<HomeRounded />} a11yTitle="Home" title="Home" onClick={navigateHome} />
         </>
       )}

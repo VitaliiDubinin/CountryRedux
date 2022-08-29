@@ -44,6 +44,7 @@ function App() {
             <Route index element={<Home />} />
 
             <Route path="/countries" element={<Countries />} />
+            <Route path="/dashboard" element={<TwoColumnDashboard />} />
             <Route path="/countries/:countrysingle" element={<RouterWrapper />} />
             {/* <Route path="/addrecipe" element={<AddRecForm />} /> */}
           </Route>
