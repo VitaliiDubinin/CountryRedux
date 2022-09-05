@@ -21,6 +21,7 @@ const CountrySingle = () => {
   let randImage = randApiHead;
   const location = useLocation();
   const country = location.state.data;
+  // let feelslike = feelslike;
 
   //
 
@@ -29,65 +30,18 @@ const CountrySingle = () => {
   // const [capgeo, setCapgeo] = useState([]);
   const [capweather, setCapweather] = useState([]);
   const [capparam, setCapparam] = useState([]);
+  const [feelslike, setFeelslike] = useState([]);
   // const [capname, setCapname] = useState();
   const [loading, setLoading] = useState(false);
 
   const size = useContext(ResponsiveContext);
-
-  // setCapname(country.capital);
-  // console.log(capname);
-  // console.log(country.capital);
-  // const capname = country.capital;
-  // console.log(capname);
-  // const capname = country.capital;
-  // const getCapgeo = () =>
-  //   axios.get("http://api.openweathermap.org/geo/1.0/direct?q=" + country.capital + "&limit=1&appid=7ba6687b19a6e5271e98d0f410014678");
-
-  // const getCapweather = () =>
-  //   axios.get("https://api.openweathermap.org/data/2.5/weather?lat=" + capgeo.lat + "&" + capgeo.lon + "&appid=7ba6687b19a6e5271e98d0f410014678");
-
-  // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   Promise.all([getCapgeo()]).then(function (results) {
-  //     const capgeoData = results[0];
-  //     setCapgeo(capgeoData.data[0]);
-  //     setLoading(false);
-  //   });
-  // }, []);
-
-  // likes work
-  // useEffect(() => {
-  //   setLoading(true);
-  //   axios
-  //     .get("http://api.openweathermap.org/geo/1.0/direct?q=" + country.capital + "&limit=1&appid=7ba6687b19a6e5271e98d0f410014678")
-  //     .then((results) => {
-  //       setCapgeo(results.data[0]);
-  //       console.log(capgeo);
-  //       console.log(capgeo.lat, capgeo.lon);
-
-  //       setLoading(false);
-  //     });
-  //   console.log(capgeo.lat, capgeo.lon);
-  //   axios
-
-  //     .get("https://api.openweathermap.org/data/2.5/weather?lat=" + capgeo.lat + "&lon=" + capgeo.lon + "&appid=7ba6687b19a6e5271e98d0f410014678")
-  //     .then((res) => {
-  //       console.log(res);
-  //       console.log(res.data);
-  //       const capweatherData = res;
-  //       setCapweather(capweatherData.data);
-  //       setLoading(false);
-  //     });
-  // }, []);
 
   useEffect(() => {
     axios
       .get("http://api.openweathermap.org/geo/1.0/direct?q=" + country.capital + "&limit=1&appid=7ba6687b19a6e5271e98d0f410014678")
       .then((response) => {
         setCapgeo(response.data[0]);
-        console.log(response.data[0]);
+        // console.log(response.data[0]);
         // console.log(capgeo.lat);
         return response.data[0];
         // return capgeo;
@@ -103,42 +57,30 @@ const CountrySingle = () => {
               "&appid=7ba6687b19a6e5271e98d0f410014678&units=metric"
           )
           .then((res) => {
-            // setCapweather(capgeo);
             setGeotoweather(capgeo);
-            console.log(capgeo);
-            console.log(capgeo.name);
-            console.log(geotoweather);
+            // console.log(capgeo);
+            // console.log(capgeo.name);
+            // console.log(geotoweather);
             setCapweather(res.data);
             setCapparam(res.data.main);
-            console.log(res.data);
-            console.log(res.data.main);
-            console.log(res.data.main.temp);
-            // console.log({ ...capweather });
-            // setCapweather(res.data);
-            // return capweather;
-            // return res.data;
-            console.log(res.data);
-            console.log(capweather);
-            // let randImage = randApiHead;
-            // if (count_words(res.data.name.split()) > 1) {
-            //   const name_array = res.data.name.split();
-            //   console.log(count_words(name_array));
-            //   const total_words = count_words(name_array);
-            //   const noun = name_array[total_words - 1];
-            //   randImage += noun;
-            //   console.log(randImage);
-            // } else {
-            //   randImage += res.data.name;
-            //   console.log(randImage);
-            // }
-            // let randImage = randApiHead + res.data.name + "_views";
-            // let randImage = randApiHead + "one day in" + res.data.name;
-            // let randImage = randApiHead + "season trip to" + res.data.name;
-            // let randImage = randApiHead + "weather in" + res.data.name;
-            // let randImage = randApiHead + "trip%20to%20" + capgeo.name + "%20street";
-            // let randImage = randApiHead + "season%20trip%20to%20" + capgeo.name;
+            console.log(res.data.main.feels_like);
+            // setFeelslike(Math.round(capparam.feels_like));
+            setFeelslike(Math.floor(res.data.main.feels_like, 2));
+            // let a = capparam.feels_like;
+            // setFeelslike(Math.floor(capparam.feels_like));
+            // setFeelslike(parseInt(capparam.feels_like));
+            // setFeelslike(Number(capparam.feels_like));
+            // console.log(feelslike);
+            // console.log(a);
+            // console.log(res.data);
+            // console.log(res.data.main);
+            // console.log(res.data.main.temp);
+            // console.log(res.data);
+            // console.log(capweather);
+            // let feelslike = Math.floor(capparam.feels_like);
+
             let randImage = randApiHead + "views%20of%20" + capgeo.name;
-            // let randImage = randApiHead + capgeo.name + "%20from%20helicopter";
+
             console.log(randImage);
           });
       });
@@ -173,7 +115,9 @@ const CountrySingle = () => {
             </Text>
             <Text color="text-strong" size="2rem" height="3rem">
               {" "}
-              Temp. feels like: <span className="capname">{capparam.feels_like}</span>
+              {/* Temp. feels like: <span className="capname">{capparam.feels_like}</span>
+              <br /> */}
+              Temp. feels like: <span className="capname">{feelslike}</span>
             </Text>
             <Text color="text-strong" size="2rem" height="3rem">
               {" "}
@@ -181,35 +125,6 @@ const CountrySingle = () => {
             </Text>
           </Box>
         </CardBody>
-        {/* <h1>{country.name.common}</h1> */}
-        {/* <p className="capital">
-        Weather in <span className="capname">{country.capital}</span>
-      </p> */}
-        {/* <h1>{country.cca2}</h1> */}
-        {/* <h1>{capgeo.lat}</h1> */}
-        {/* <h1>{capgeo.lon}</h1> */}
-        {/* <h1>{capweather.name}</h1> */}
-        {/* <h1>{capweather.visibility}</h1> */}
-        {/* <Weatherwindow key={capweather.id} data={capweather} {...capweather}></Weatherwindow> */}
-        {/* <Weatherwindow key={capweather.id} data={capweather}></Weatherwindow> */}
-        {/* <h1>{...capweather}</h1> */}
-        {/* <p className="languages">
-        Temperature: <span className="capname">{capparam.temp}</span>
-      </p> */}
-        {/* <p className="languages">
-        Temp. feels like: <span className="capname">{capparam.feels_like}</span>
-      </p> */}
-        {/* <p className="languages">
-        Humidity: <span className="capname">{capparam.humidity}</span>
-      </p> */}
-        {/* <h1>{capweather.main.temp}</h1>
-      <h1>{capweather.main.feels_like}</h1>
-      <h1>{capweather.main.humidity}</h1> */}
-        {/* <img className="flagsq" src={country.flags.png} alt={country.name.common} /> */}
-        {/* <img className="flagsq" src={randImage} alt={country.name.common} /> */}
-        {/* <div id="openweathermap-widget-15">weather window</div> */}
-        {/* <script async="" charset="utf-8" src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js"></script>
-      <script src="widjet.js" type="text/javascript"></script> */}
       </Card>
       {/* </Grid> */}
     </Box>
