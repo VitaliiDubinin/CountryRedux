@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardHeader, CardBody, CardFooter, Button, Text } from "grommet";
 import { Favorite, ShareOption } from "grommet-icons";
+import { useSelector, useDispatch } from "react-redux";
 
 const CountryCard = ({ capital, flag, name, languages, population, currencies, contpop, idnum, data }) => {
   if (population >= 1000000) {
@@ -10,6 +11,7 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
     contpop = (population / 1000).toFixed(1) + " K";
   }
 
+  // const dispatch = useDispatch();
   return (
     // <div className="card">
     <Card direction="column" height="24rem" width="30rem" background="light-5" border={{ color: "brand", size: "small" }} gap="xsmall">
@@ -43,6 +45,7 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
         </span>
       </CardBody>
       <CardFooter pad={{ horizontal: "small" }} background="light-2">
+        {/* <Button icon={<Favorite color="red" />} hoverIndicator /> */}
         <Button icon={<Favorite color="red" />} hoverIndicator />
         <Link to={name.common} state={{ data: data }}>
           See more
