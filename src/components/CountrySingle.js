@@ -1,14 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import { Box, Card, CardBody, Image, Text, Grid, ResponsiveContext } from "grommet";
-// import Weatherwindow from "./Weatherwindow";
-// import vidjet from "./vidjet";
-// const apiHead = "https://source.unsplash.com/";
-// const randApiHead = "https://source.unsplash.com/random/500x400/?";
-const randApiHead = "https://source.unsplash.com/500x400/?";
-// const randApiHead = "https://www.pexels.com/search/";
-// const randApiHead = "https://pixabay.com/photos/sun-has-flower-echinacea-daisy-7391959/";
+// import { Box, Card, CardBody, Image, Text, Grid, ResponsiveContext } from "grommet";
+import { Card, CardBody, Image, Text } from "grommet";
+
+// import React, { useContext } from "react";
+import { Box, Grid, Heading, Main, ResponsiveContext, Page, PageContent, PageHeader } from "grommet";
+import { AppContainer } from "../components/dashboard/AppContainer";
+import { ContentArea } from "../components/dashboard/ContentArea";
+import { FirmwareBaselines } from "../components/dashboard/FirmwareBaselines";
+import { FirmwareStatus } from "../components/dashboard/FirmwareStatus";
+import { RecentActivity } from "../components/dashboard/RecentActivity";
+import { ServerAttention } from "../components/dashboard/ServerAttention";
+import { ServerHealth } from "../components/dashboard/ServerHealth";
+import { UpdatesAvaliable } from "../components/dashboard/UpdatesAvaliable";
+
+const randApiHead = "https://picsum.photos/500/400";
+
 const count_words = (word_array) => {
   let total = 0;
   word_array.forEach(() => {
@@ -17,21 +25,179 @@ const count_words = (word_array) => {
   return total;
 };
 
-const CountrySingle = () => {
+const CountrySingle = () => (
+  // const CountrySingle = () => {
+  //   let randImage = randApiHead;
+  //   const location = useLocation();
+  //   const country = location.state.data;
+
+  //   const [capgeo, setCapgeo] = useState({});
+  //   const [geotoweather, setGeotoweather] = useState({});
+
+  //   const [capweather, setCapweather] = useState([]);
+  //   const [capparam, setCapparam] = useState([]);
+  //   const [feelslike, setFeelslike] = useState([]);
+
+  //   const [loading, setLoading] = useState(false);
+
+  //   const size = useContext(ResponsiveContext);
+
+  //   useEffect(() => {
+  //     axios
+  //       .get("http://api.openweathermap.org/geo/1.0/direct?q=" + country.capital + "&limit=1&appid=7ba6687b19a6e5271e98d0f410014678")
+  //       .then((response) => {
+  //         setCapgeo(response.data[0]);
+  //         return response.data[0];
+  //       })
+
+  //       .then(async (capgeo) => {
+  //         await axios
+  //           .get(
+  //             "https://api.openweathermap.org/data/2.5/weather?lat=" +
+  //               capgeo.lat +
+  //               "&lon=" +
+  //               capgeo.lon +
+  //               "&appid=7ba6687b19a6e5271e98d0f410014678&units=metric"
+  //           )
+  //           .then((res) => {
+  //             setGeotoweather(capgeo);
+  //             setCapweather(res.data);
+  //             setCapparam(res.data.main);
+  //             console.log(res.data.main.feels_like);
+  //             setFeelslike(Math.floor(res.data.main.feels_like, 2));
+  //             let randImage = randApiHead;
+
+  //             console.log(randImage);
+  //           });
+  //       });
+  //   }, []);
+
+  //   return (
+  //     <Box
+  //       background="background"
+  //       justify="center"
+  //       align="center"
+  //       pad={{
+  //         vertical: "xlarge",
+  //       }}
+  //       flex={false}
+  //     >
+  //       <Card background="background-front" width="medium">
+  //         <Box height="small" width="medium">
+  //           <Image className="flagsq" src={randImage} alt={country.name.common} fit="cover" />
+  //         </Box>
+  //         <CardBody gap="small">
+  //           <Box gap="medium">
+  //             {" "}
+  //             <Text color="text-strong" size="xxlarge" weight="bold">
+  //               Weather in <span className="capname">{country.capital}</span>
+  //             </Text>
+  //             <Text color="text-strong" size="2rem" height="3rem">
+  //               {" "}
+  //               Temperature: <span className="capname">{capparam.temp}</span>
+  //             </Text>
+  //             <Text color="text-strong" size="2rem" height="3rem">
+  //               {" "}
+  //               Temp. feels like: <span className="capname">{feelslike}</span>
+  //             </Text>
+  //             <Text color="text-strong" size="2rem" height="3rem">
+  //               {" "}
+  //               Humidity:<span className="capname">{capparam.humidity}</span>
+  //             </Text>
+  //           </Box>
+  //         </CardBody>
+  //       </Card>
+  //     </Box>
+  //   );
+  // };
+  // export default CountrySingle;
+
+  // const CountrySingle = () => (
+  <AppContainer background="background-back">
+    <ContentArea title="Global Header" />
+    <Page>
+      <PageContent gap="large">
+        <PageHeader title="Country Dashboard" />
+        <Content />
+      </PageContent>
+    </Page>
+    <ContentArea title="Global Footer" />
+  </AppContainer>
+);
+
+export default CountrySingle;
+
+const parentGrid = {
+  columns: {
+    xsmall: "100%",
+    small: "100%",
+    medium: ["auto", ["small", "medium"]],
+    large: ["auto", ["small", "medium"]],
+    xlarge: ["auto", "medium"],
+  },
+  gap: {
+    xsmall: "large",
+    small: "large",
+    medium: "medium",
+    large: "large",
+    xlarge: "large",
+  },
+};
+
+const firstChildGrid = {
+  columns: {
+    xsmall: "100%",
+    small: "100%",
+    medium: "100%",
+    large: [
+      ["medium", "auto"],
+      ["small", "medium"],
+    ],
+    xlarge: ["auto", ["small", "medium"]],
+  },
+  gap: "medium",
+};
+
+const secondChildGrid = {
+  columns: {
+    xsmall: ["100%"],
+    small: ["100%"],
+    medium: ["100%"],
+    large: [["auto", "auto"]],
+    xlarge: [["auto", "auto"]],
+  },
+  rows: ["auto"],
+  areas: {
+    xsmall: [["firmwareStatus"], ["firmwareUpdates"], ["firmwareBaselines"]],
+    small: [["firmwareStatus"], ["firmwareUpdates"], ["firmwareBaselines"]],
+    medium: [["firmwareStatus"], ["firmwareUpdates"], ["firmwareBaselines"]],
+    large: [
+      ["firmwareStatus", "firmwareUpdates"],
+      ["firmwareBaselines", "firmwareBaselines"],
+    ],
+    xlarge: [
+      ["firmwareStatus", "firmwareBaselines"],
+      ["firmwareUpdates", "firmwareBaselines"],
+    ],
+  },
+  gap: "medium",
+};
+
+const Content = () => {
+  // const size = useContext(ResponsiveContext);
+
   let randImage = randApiHead;
   const location = useLocation();
   const country = location.state.data;
-  // let feelslike = feelslike;
-
-  //
+  console.log(country);
 
   const [capgeo, setCapgeo] = useState({});
   const [geotoweather, setGeotoweather] = useState({});
-  // const [capgeo, setCapgeo] = useState([]);
+
   const [capweather, setCapweather] = useState([]);
   const [capparam, setCapparam] = useState([]);
   const [feelslike, setFeelslike] = useState([]);
-  // const [capname, setCapname] = useState();
+
   const [loading, setLoading] = useState(false);
 
   const size = useContext(ResponsiveContext);
@@ -41,12 +207,9 @@ const CountrySingle = () => {
       .get("http://api.openweathermap.org/geo/1.0/direct?q=" + country.capital + "&limit=1&appid=7ba6687b19a6e5271e98d0f410014678")
       .then((response) => {
         setCapgeo(response.data[0]);
-        // console.log(response.data[0]);
-        // console.log(capgeo.lat);
         return response.data[0];
-        // return capgeo;
       })
-      // .then(console.log(capgeo))
+
       .then(async (capgeo) => {
         await axios
           .get(
@@ -58,28 +221,11 @@ const CountrySingle = () => {
           )
           .then((res) => {
             setGeotoweather(capgeo);
-            // console.log(capgeo);
-            // console.log(capgeo.name);
-            // console.log(geotoweather);
             setCapweather(res.data);
             setCapparam(res.data.main);
             console.log(res.data.main.feels_like);
-            // setFeelslike(Math.round(capparam.feels_like));
             setFeelslike(Math.floor(res.data.main.feels_like, 2));
-            // let a = capparam.feels_like;
-            // setFeelslike(Math.floor(capparam.feels_like));
-            // setFeelslike(parseInt(capparam.feels_like));
-            // setFeelslike(Number(capparam.feels_like));
-            // console.log(feelslike);
-            // console.log(a);
-            // console.log(res.data);
-            // console.log(res.data.main);
-            // console.log(res.data.main.temp);
-            // console.log(res.data);
-            // console.log(capweather);
-            // let feelslike = Math.floor(capparam.feels_like);
-
-            let randImage = randApiHead + "views%20of%20" + capgeo.name;
+            let randImage = randApiHead;
 
             console.log(randImage);
           });
@@ -87,47 +233,103 @@ const CountrySingle = () => {
   }, []);
 
   return (
-    <Box
-      background="background"
-      justify="center"
-      align="center"
-      pad={{
-        // horizontal: !["xsmall", "small"].includes(size) ? "xlarge" : "medium",
-        // horizontal: "xlarge",
-        vertical: "xlarge",
-      }}
-      flex={false}
-    >
-      {/* <Grid columns={!["xsmall", "small"].includes(size) ? "medium" : "100%"} rows={[["auto", "full"]]} gap="medium"> */}
-      <Card background="background-front" width="medium">
-        <Box height="small" width="medium">
-          <Image className="flagsq" src={randImage} alt={country.name.common} fit="cover" />
-        </Box>
-        <CardBody gap="small">
-          <Box gap="medium">
-            {" "}
-            <Text color="text-strong" size="xxlarge" weight="bold">
-              Weather in <span className="capname">{country.capital}</span>
-            </Text>
-            <Text color="text-strong" size="2rem" height="3rem">
-              {" "}
-              Temperature: <span className="capname">{capparam.temp}</span>
-            </Text>
-            <Text color="text-strong" size="2rem" height="3rem">
-              {" "}
-              {/* Temp. feels like: <span className="capname">{capparam.feels_like}</span>
-              <br /> */}
-              Temp. feels like: <span className="capname">{feelslike}</span>
-            </Text>
-            <Text color="text-strong" size="2rem" height="3rem">
-              {" "}
-              Humidity:<span className="capname">{capparam.humidity}</span>
-            </Text>
+    <Main>
+      <Grid columns={parentGrid.columns[size]} gap={parentGrid.gap[size]}>
+        {["xsmall", "small"].includes(size) && <RecentActivity />}
+        <Box gap="large">
+          <Box gap="small">
+            <Heading level={2} size="small" margin="none">
+              Weather in {country.capital}
+            </Heading>
+            <Grid columns={firstChildGrid.columns[size]} gap={firstChildGrid.gap}>
+              {/* <ServerHealth background="background-front" /> */}
+              {/* <ServerHealth background="background-front"> */}
+              {/* <Box
+                background="background"
+                justify="center"
+                align="center"
+                pad={{
+                  vertical: "xlarge",
+                }}
+                flex={false}
+              > */}
+              <Card background="background-front" width="medium">
+                <Box height="small" width="medium">
+                  <Image className="flagsq" src={randImage} alt={country.name.common} fit="cover" />
+                </Box>
+                <CardBody gap="small">
+                  <Box gap="medium">
+                    {" "}
+                    {/* <Text color="text-strong" size="xxlarge" weight="bold">
+                        Weather in <span className="capname">{country.capital}</span>
+                      </Text> */}
+                    <Text color="text-strong" size="2rem" height="3rem">
+                      {" "}
+                      Temperature: <span className="capname">{capparam.temp}</span>
+                    </Text>
+                    <Text color="text-strong" size="2rem" height="3rem">
+                      {" "}
+                      Temp. feels like: <span className="capname">{feelslike}</span>
+                    </Text>
+                    <Text color="text-strong" size="2rem" height="3rem">
+                      {" "}
+                      Humidity:<span className="capname">{capparam.humidity}</span>
+                    </Text>
+                  </Box>
+                </CardBody>
+              </Card>
+              {/* </Box> */}
+              {/* </ServerHealth> */}
+
+              <ServerAttention background="background-front" />
+            </Grid>
           </Box>
-        </CardBody>
-      </Card>
-      {/* </Grid> */}
-    </Box>
+          <Box gap="small">
+            <Heading level={2} size="small" margin="none">
+              Firmware
+            </Heading>
+            <Grid columns={secondChildGrid.columns[size]} rows={secondChildGrid.rows} areas={secondChildGrid.areas[size]} gap={secondChildGrid.gap}>
+              <FirmwareStatus background="background-front" gridArea="firmwareStatus" />
+              <FirmwareBaselines background="background-front" gridArea="firmwareBaselines" />
+              <UpdatesAvaliable background="background-front" gridArea="firmwareUpdates" />
+            </Grid>
+          </Box>
+        </Box>
+        {/* {!["xsmall", "small"].includes(size) && (
+          <Box gap="large">
+            <RecentActivity />
+          </Box>
+        )} */}
+
+        <Card background="background-front" width="medium">
+          <Heading level={2} size="small" margin="none">
+            {/* Political */}
+          </Heading>
+          <Box height="small" width="medium">
+            <Image className="flagsq" src={country.flags.png} alt={country.flag} fit="cover" />
+          </Box>
+          <CardBody gap="small">
+            <Box gap="medium">
+              {" "}
+              {/* <Text color="text-strong" size="xxlarge" weight="bold">
+                        Weather in <span className="capname">{country.capital}</span>
+                      </Text> */}
+              <Text color="text-strong" size="2rem" height="3rem">
+                {" "}
+                Capital: <span className="capname">{country.capital}</span>
+              </Text>
+              <Text color="text-strong" size="2rem" height="3rem">
+                {" "}
+                Timezone: <span className="capname">{country.timezones[0]}</span>
+              </Text>
+              <Text color="text-strong" size="2rem" height="3rem">
+                {" "}
+                Subregion:<span className="capname">{country.subregion}</span>
+              </Text>
+            </Box>
+          </CardBody>
+        </Card>
+      </Grid>
+    </Main>
   );
 };
-export default CountrySingle;
