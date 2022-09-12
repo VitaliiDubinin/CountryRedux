@@ -13,9 +13,10 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
   }
 
   const dispatch = useDispatch();
-  const addFav = () => {
-    console.log("FavAdded");
-    dispatch(addFavorites());
+  const addFav = (e) => {
+    // console.log("FavAdded");
+    // console.log(e);
+    dispatch(addFavorites(e));
   };
 
   // const dispatch = useDispatch();
@@ -54,7 +55,7 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
       </CardBody>
       <CardFooter pad={{ horizontal: "small" }} background="light-2">
         {/* <Button icon={<Favorite color="red" />} hoverIndicator /> */}
-        <Button icon={<Favorite color="red" onClick={addFav} />} hoverIndicator />
+        <Button icon={<Favorite color="red" onClick={() => addFav(name.common)} />} hoverIndicator />
         <Link to={name.common} state={{ data: data }}>
           See more
         </Link>
