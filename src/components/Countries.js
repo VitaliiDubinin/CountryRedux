@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useContext, useMemo } from "react";
 import CountryCard from "./CountryCard";
+
+import SearchGlob from "./Search";
+
 // import axios from "axios";
 import { Grid, WorldMap, TextInput, Box, Button, ResponsiveContext, Text } from "grommet";
 import { Search as SearchIcon } from "grommet-icons";
@@ -23,6 +26,7 @@ const Countries = () => {
   const countriesList = useSelector((state) => state.countries.countries);
   const loading = useSelector((state) => state.countries.isLoading);
   const searchInput = useSelector((state) => state.countries.search);
+  // console.log(searchInput);
 
   const size = useContext(ResponsiveContext);
   const [user, setUser] = useState(defaultUser);
@@ -91,19 +95,17 @@ const Countries = () => {
                     selectColor="accent-2"
                   />
 
-                  <Box background="background-contrast" round="xsmall" width="medium" alignSelf="center">
+                  <SearchGlob />
+                  {/* <Box background="background-contrast" round="xsmall" width="medium" alignSelf="center">
                     <StyledTextInput
                       icon={<SearchIcon id="search-icon" color="placeholder" />}
                       placeholder="Search"
-                      // plain
                       reverse
-                      // value={search}
                       value={searchInput}
                       onChange={searchHandler}
-                      // onchange={(e) => dispatch(search(e.target.value))}
                       type="search"
                     />
-                  </Box>
+                  </Box> */}
 
                   <Grid columns={!["xsmall", "small"].includes(size) ? "medium" : "100%"} rows={[["auto", "full"]]} gap="medium" fill>
                     {countryFilter.map((scount) => (

@@ -8,6 +8,7 @@ import CountriesSingle from "./components/CountriesSingle";
 import Layout from "./pages/Layout";
 import Home from "./components/Home";
 import Countries from "./components/Countries";
+import Favorites from "./components/Favorites";
 import TwoColumnDashboard from "./components/dashboard/TwoColumnDashboard";
 // import "bootstrap";
 // import "../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
@@ -46,6 +47,7 @@ function App() {
             <Route index element={<Home />} />
 
             <Route path="/countries" element={<Countries />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/dashboard" element={<TwoColumnDashboard />} />
             <Route path="/countries/:countrysingle" element={<RouterWrapper />} />
             {/* <Route path="/addrecipe" element={<AddRecForm />} /> */}

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Avatar, Box, Button, DropButton, Nav, ResponsiveContext, Text } from "grommet";
-import { HelpOption, HomeRounded } from "grommet-icons";
+import { HelpOption, HomeRounded, Favorite } from "grommet-icons";
 import { UserContext } from "./UserContext";
 
 export const HeaderNav = () => {
@@ -16,6 +16,9 @@ export const HeaderNav = () => {
   const navigateDashboard = () => {
     navigate("/dashboard");
   };
+  const navigateFavorites = () => {
+    navigate("/favorites");
+  };
 
   return user ? (
     <Nav align="center" direction="row" gap="small">
@@ -23,6 +26,7 @@ export const HeaderNav = () => {
         <>
           <Button icon={<HelpOption />} a11yTitle="Help" title="Help" onClick={navigateDashboard} />
           <Button icon={<HomeRounded />} a11yTitle="Home" title="Home" onClick={navigateHome} />
+          <Button icon={<Favorite />} a11yTitle="Home" title="Home" onClick={navigateFavorites} label="5" />
         </>
       )}
       <DropButton

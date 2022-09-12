@@ -17,6 +17,7 @@ export const countriesSlice = createSlice({
       state.isLoading = action.payload;
     },
     search(state, action) {
+      // console.log(action.payload);
       state.search = action.payload;
     },
   },

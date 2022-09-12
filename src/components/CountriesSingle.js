@@ -67,11 +67,11 @@ const CountriesSingle = () => {
             setGeotoweather(capgeo);
             setCapweather(res.data);
             setCapparam(res.data.main);
-            console.log(res.data.main.feels_like);
+            // console.log(res.data.main.feels_like);
             setFeelslike(Math.floor(res.data.main.feels_like, 2));
             let randImage = randApiHead;
 
-            console.log(randImage);
+            // console.log(randImage);
           });
       });
   }, []);
