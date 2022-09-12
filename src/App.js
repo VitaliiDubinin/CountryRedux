@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 // import "./App.css";
 import CountrySingle from "./components/CountrySingle";
+import CountriesSingle from "./components/CountriesSingle";
 import Layout from "./pages/Layout";
 import Home from "./components/Home";
 import Countries from "./components/Countries";
@@ -30,7 +31,8 @@ const theme = {
 };
 const RouterWrapper = (props) => {
   const params = useParams();
-  return <CountrySingle params={params} {...props} />;
+  return <CountriesSingle params={params} {...props} />;
+  // return <CountrySingle params={params} {...props} />;
   // return <TwoColumnDashboard params={params} {...props} />;
 };
 

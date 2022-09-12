@@ -24,16 +24,6 @@ const Countries = () => {
   const loading = useSelector((state) => state.countries.isLoading);
   const searchInput = useSelector((state) => state.countries.search);
 
-  // const [country, setCountry] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // const [search, setSearch] = useState("");
-
-  // export const initializeCountries=()=>{
-  //   return async (dispatch)=>{
-  //     const countries=await
-  //   }
-  // }
-
   const size = useContext(ResponsiveContext);
   const [user, setUser] = useState(defaultUser);
   const contextValue = useMemo(
@@ -43,17 +33,6 @@ const Countries = () => {
     }),
     [user]
   );
-
-  // const getCountry = () => axios.get("https://restcountries.com/v3.1/all");
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   Promise.all([getCountry()]).then(function (results) {
-  //     const countriesData = results[0];
-  //     setCountry(countriesData.data);
-  //     setLoading(false);
-  //   });
-  // }, []);
 
   useEffect(() => {
     dispatch(initCountries());
@@ -65,14 +44,11 @@ const Countries = () => {
     dispatch(search(e.target.value));
   };
 
-  // const countryFilter = country.filter((res) => {
   const countryFilter = countriesList.filter((res) => {
-    // return res.name.common.toLowerCase().includes(search.toLowerCase());
     return res.name.common.toLowerCase().includes(searchInput.toLowerCase());
   });
 
   if (loading) {
-    // if (isLoading) {
     return <p>Loading....</p>;
   } else {
     return (
