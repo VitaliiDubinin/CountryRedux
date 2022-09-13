@@ -1,9 +1,23 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Card, CardHeader, CardBody, CardFooter, Button, Text } from "grommet";
-import { Favorite, ShareOption } from "grommet-icons";
+import { Box, ThemeContext, grommet, Card, CardHeader, CardBody, CardFooter, Button, Text } from "grommet";
+import { Favorite, ShareOption, base, Apple, Filter } from "grommet-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { addFavorites } from "../features/countries/cartSlice";
+import styled, { css, ThemeProvider } from "styled-components";
+import { deepMerge } from "grommet-icons/utils";
+
+// const customColorTheme = deepMerge(base, {
+//   icon: {
+//     extend: css`
+//       ${(props) =>
+//         props.color === "blue" &&
+//         `
+//       fill: "dark-1";
+//     `}
+//     `,
+//   },
+// });
 
 const CountryCard = ({ capital, flag, name, languages, population, currencies, contpop, idnum, data }) => {
   if (population >= 1000000) {
@@ -18,6 +32,33 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
     // console.log(e);
     dispatch(addFavorites(e));
   };
+
+  const filledIcon = css`
+    path[fill="none"] {
+      fill: rgb(229 6 59) !important;
+    }
+    polygon[fill="none"] {
+      fill: rgb(229 36 59) !important;
+    }
+  `;
+
+  const FavoriteFilled = styled(Favorite)`
+    ${(props) => (props.favorite ? filledIcon : "")}
+  `;
+
+  const FilterFilled = styled(Filter)`
+    ${(props) => (props.filled ? filledIcon : "")}
+  `;
+
+  // const filledIcon = css`
+  //   path[fill="none"] {
+  //     fill: ${(props) => props.theme.colors["dark-4"]};
+  //   }
+  // `;
+
+  // const CardFavorite = styled(Favorite)`
+  //   ${(props) => (props.checked ? filledIcon : "")}
+  // `;
 
   // const dispatch = useDispatch();
   return (
@@ -55,7 +96,27 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
       </CardBody>
       <CardFooter pad={{ horizontal: "small" }} background="light-2">
         {/* <Button icon={<Favorite color="red" />} hoverIndicator /> */}
-        <Button icon={<Favorite color="red" onClick={() => addFav(name.common)} />} hoverIndicator />
+        <Button icon={<FavoriteFilled color="red" favorite="true" onClick={() => addFav(name.common)} />} hoverIndicator />
+        {/* <Button> */}
+        {/* <Box> */}
+        {/* <ThemeProvider theme={customColorTheme}> */}
+        {/* <FavoriteFilled color="violet" filled="true" onClick={() => addFav(name.common)} /> */}
+        {/* </ThemeProvider> */}
+        {/* <ThemeContext.Consumer>{(theme) => <CardFavorite theme={theme.icon} checked={true}></CardFavorite>}</ThemeContext.Consumer> */}
+
+        {/* <CardFavorite color="red" checked="true" /> */}
+        {/* </Box> */}
+        {/* </Button> */}
+
+        {/* <Box>
+                  <CardFavorite
+                    theme={theme.icon}
+                    checked={restaurant.favorite}
+                  >
+      
+                  </CardFavorite>
+                </Box> */}
+
         <Link to={name.common} state={{ data: data }}>
           See more
         </Link>

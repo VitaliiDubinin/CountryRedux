@@ -17,10 +17,11 @@ export const cartSlice = createSlice({
         state.favlist.push({
           id: new Date().toISOString(),
           item: action.payload,
-          favorite: "yes",
+          favorite: true,
         });
       } else {
         console.log("doubled===removed");
+
         state.favlist = state.favlist.filter((coun) => coun.item !== action.payload);
       }
     },
