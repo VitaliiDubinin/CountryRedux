@@ -16,17 +16,38 @@ import { DemoPageContent } from "./grom/DemoPageContent";
 import { useDispatch, useSelector } from "react-redux";
 import { initCountries, search } from "../features/countries/countriesSlice";
 
+// import { loadState, saveState } from "./localStorage";
+
 const StyledTextInput = styled(TextInput).attrs(() => ({
   "aria-labelledby": "search-icon",
 }))``;
 
 const Countries = () => {
+  let Favarray = [
+    {
+      id: "2022-09-17T17:17:44.240Z",
+      item: "Guadeloupe",
+      favorite: true,
+    },
+    {
+      id: "2022-09-17T17:17:47.599Z",
+      item: "Mali",
+      favorite: true,
+    },
+    {
+      id: "2022-09-17T17:17:51.447Z",
+      item: "Saint Helena, Ascension and Tristan da Cunha",
+      favorite: "true",
+    },
+  ];
+
   const dispatch = useDispatch();
   // const countriesList = useSelector((state) => state.countries (!store name!).countries (!reducer name!));
   const countriesList = useSelector((state) => state.countries.countries);
   const loading = useSelector((state) => state.countries.isLoading);
   const searchInput = useSelector((state) => state.countries.search);
-  // console.log(searchInput);
+  const favoriteList = useSelector((state) => state.favorites.favlist);
+  // console.log(Favarray);
 
   const size = useContext(ResponsiveContext);
   const [user, setUser] = useState(defaultUser);
@@ -109,7 +130,13 @@ const Countries = () => {
 
                   <Grid columns={!["xsmall", "small"].includes(size) ? "medium" : "100%"} rows={[["auto", "full"]]} gap="medium" fill>
                     {countryFilter.map((scount) => (
-                      <CountryCard key={countryFilter.indexOf(scount)} data={scount} {...scount} />
+                      <CountryCard
+                        key={countryFilter.indexOf(scount)}
+                        data={scount}
+                        favorite={Favarray.find((fav) => fav.item === scount.name.common)}
+                        {...scount}
+                        {...Favarray}
+                      />
                     ))}
                   </Grid>
                 </Box>

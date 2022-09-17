@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import { Box, ThemeContext, grommet, Card, CardHeader, CardBody, CardFooter, Button, Text } from "grommet";
 import { Favorite, ShareOption, base, Apple, Filter } from "grommet-icons";
@@ -19,12 +19,20 @@ import { deepMerge } from "grommet-icons/utils";
 //   },
 // });
 
-const CountryCard = ({ capital, flag, name, languages, population, currencies, contpop, idnum, data }) => {
+const CountryCard = ({ capital, flag, name, languages, population, currencies, contpop, idnum, data, favorite }) => {
   if (population >= 1000000) {
     contpop = (population / 1000000).toFixed(1) + " M";
   } else {
     contpop = (population / 1000).toFixed(1) + " K";
   }
+  // const jso = JSON.stringify(favorite);
+  // console.log(data.cca2, favorite.favorite);
+  // console.log(favorite);
+  const arr = { ...favorite };
+  console.log(arr.favorite);
+
+  // const [favorit, setFavorit] = useState();
+  // setFavorit(favorite.favorite);
 
   const dispatch = useDispatch();
   const addFav = (e) => {
@@ -35,20 +43,21 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
 
   const filledIcon = css`
     path[fill="none"] {
-      fill: rgb(229 6 59) !important;
-    }
-    polygon[fill="none"] {
       fill: rgb(229 36 59) !important;
     }
   `;
+  //   polygon[fill="none"] {
+  //     fill: rgb(229 36 59) !important;
+  //   }
+  // `;
 
   const FavoriteFilled = styled(Favorite)`
     ${(props) => (props.favorite ? filledIcon : "")}
   `;
 
-  const FilterFilled = styled(Filter)`
-    ${(props) => (props.filled ? filledIcon : "")}
-  `;
+  // const FilterFilled = styled(Filter)`
+  //   ${(props) => (props.filled ? filledIcon : "")}
+  // `;
 
   // const filledIcon = css`
   //   path[fill="none"] {
@@ -96,7 +105,8 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
       </CardBody>
       <CardFooter pad={{ horizontal: "small" }} background="light-2">
         {/* <Button icon={<Favorite color="red" />} hoverIndicator /> */}
-        <Button icon={<FavoriteFilled color="red" favorite="true" onClick={() => addFav(name.common)} />} hoverIndicator />
+        {/* <Button icon={<FavoriteFilled color="red" favorite="true" onClick={() =>  */}
+        <Button icon={<FavoriteFilled color="red" favorite={arr.favorite} onClick={() => addFav(name.common)} />} hoverIndicator />
         {/* <Button> */}
         {/* <Box> */}
         {/* <ThemeProvider theme={customColorTheme}> */}
