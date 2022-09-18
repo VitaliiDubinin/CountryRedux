@@ -7,18 +7,6 @@ import { addFavorites } from "../features/countries/cartSlice";
 import styled, { css, ThemeProvider } from "styled-components";
 import { deepMerge } from "grommet-icons/utils";
 
-// const customColorTheme = deepMerge(base, {
-//   icon: {
-//     extend: css`
-//       ${(props) =>
-//         props.color === "blue" &&
-//         `
-//       fill: "dark-1";
-//     `}
-//     `,
-//   },
-// });
-
 const CountryCard = ({ capital, flag, name, languages, population, currencies, contpop, idnum, data, favorite }) => {
   if (population >= 1000000) {
     contpop = (population / 1000000).toFixed(1) + " M";
@@ -29,7 +17,8 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
   // console.log(data.cca2, favorite.favorite);
   // console.log(favorite);
   const arr = { ...favorite };
-  console.log(arr.favorite);
+  // const favoriteb = arr.favorite.toString();
+  // console.log(arr.favorite);
 
   // const [favorit, setFavorit] = useState();
   // setFavorit(favorite.favorite);
@@ -46,30 +35,11 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
       fill: rgb(229 36 59) !important;
     }
   `;
-  //   polygon[fill="none"] {
-  //     fill: rgb(229 36 59) !important;
-  //   }
-  // `;
 
   const FavoriteFilled = styled(Favorite)`
     ${(props) => (props.favorite ? filledIcon : "")}
   `;
 
-  // const FilterFilled = styled(Filter)`
-  //   ${(props) => (props.filled ? filledIcon : "")}
-  // `;
-
-  // const filledIcon = css`
-  //   path[fill="none"] {
-  //     fill: ${(props) => props.theme.colors["dark-4"]};
-  //   }
-  // `;
-
-  // const CardFavorite = styled(Favorite)`
-  //   ${(props) => (props.checked ? filledIcon : "")}
-  // `;
-
-  // const dispatch = useDispatch();
   return (
     // <div className="card">
     <Card direction="column" height="24rem" width="30rem" background="light-5" border={{ color: "brand", size: "small" }} gap="xsmall">
@@ -104,28 +74,7 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
         </span>
       </CardBody>
       <CardFooter pad={{ horizontal: "small" }} background="light-2">
-        {/* <Button icon={<Favorite color="red" />} hoverIndicator /> */}
-        {/* <Button icon={<FavoriteFilled color="red" favorite="true" onClick={() =>  */}
         <Button icon={<FavoriteFilled color="red" favorite={arr.favorite} onClick={() => addFav(name.common)} />} hoverIndicator />
-        {/* <Button> */}
-        {/* <Box> */}
-        {/* <ThemeProvider theme={customColorTheme}> */}
-        {/* <FavoriteFilled color="violet" filled="true" onClick={() => addFav(name.common)} /> */}
-        {/* </ThemeProvider> */}
-        {/* <ThemeContext.Consumer>{(theme) => <CardFavorite theme={theme.icon} checked={true}></CardFavorite>}</ThemeContext.Consumer> */}
-
-        {/* <CardFavorite color="red" checked="true" /> */}
-        {/* </Box> */}
-        {/* </Button> */}
-
-        {/* <Box>
-                  <CardFavorite
-                    theme={theme.icon}
-                    checked={restaurant.favorite}
-                  >
-      
-                  </CardFavorite>
-                </Box> */}
 
         <Link to={name.common} state={{ data: data }}>
           See more

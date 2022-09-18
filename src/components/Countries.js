@@ -39,6 +39,16 @@ const Countries = () => {
       item: "Saint Helena, Ascension and Tristan da Cunha",
       favorite: "true",
     },
+    {
+      id: "2022-09-17T17:19:47Z",
+      item: "Finland",
+      favorite: true,
+    },
+    {
+      id: "2022-09-17T17:18:47Z",
+      item: "Bulgaria",
+      favorite: true,
+    },
   ];
 
   const dispatch = useDispatch();
@@ -47,7 +57,6 @@ const Countries = () => {
   const loading = useSelector((state) => state.countries.isLoading);
   const searchInput = useSelector((state) => state.countries.search);
   const favoriteList = useSelector((state) => state.favorites.favlist);
-  // console.log(Favarray);
 
   const size = useContext(ResponsiveContext);
   const [user, setUser] = useState(defaultUser);
