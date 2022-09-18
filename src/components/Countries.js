@@ -27,12 +27,12 @@ const Countries = () => {
     {
       id: "2022-09-17T17:17:44.240Z",
       item: "Guadeloupe",
-      favorite: true,
+      favorite: "true",
     },
     {
       id: "2022-09-17T17:17:47.599Z",
       item: "Mali",
-      favorite: true,
+      favorite: "true",
     },
     {
       id: "2022-09-17T17:17:51.447Z",
@@ -42,12 +42,12 @@ const Countries = () => {
     {
       id: "2022-09-17T17:19:47Z",
       item: "Finland",
-      favorite: true,
+      favorite: "true",
     },
     {
       id: "2022-09-17T17:18:47Z",
       item: "Bulgaria",
-      favorite: true,
+      favorite: "true",
     },
   ];
 

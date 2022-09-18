@@ -17,7 +17,7 @@ export const cartSlice = createSlice({
         state.favlist.push({
           id: new Date().toISOString(),
           item: action.payload,
-          favorite: true,
+          favorite: "true",
         });
       } else {
         console.log("doubled===removed");
