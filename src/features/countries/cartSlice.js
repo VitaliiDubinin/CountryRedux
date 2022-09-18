@@ -8,7 +8,7 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addFavorites(state, action) {
-      //   state.favorites = action.payload;
+      state.favorites = action.payload;
       console.log(action.payload);
 
       const inFav = state.favlist.find((coun) => coun.item === action.payload);

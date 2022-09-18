@@ -47,7 +47,7 @@ const Countries = () => {
     {
       id: "2022-09-17T17:18:47Z",
       item: "Bulgaria",
-      favorite: "true",
+      favorite: "",
     },
   ];
 
@@ -60,6 +60,9 @@ const Countries = () => {
 
   const size = useContext(ResponsiveContext);
   const [user, setUser] = useState(defaultUser);
+
+  const [items, setItems] = useState([]);
+
   const contextValue = useMemo(
     () => ({
       user,
@@ -69,8 +72,16 @@ const Countries = () => {
   );
 
   useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("persist:root")).favorites;
+    if (items) {
+      setItems(items);
+    }
     dispatch(initCountries());
   }, [dispatch]);
+
+  // console.log({ ...items });
+  // const fes = Object.value(items);
+  console.log(items);
 
   const searchHandler = (e) => {
     // console.log(e.target.value);

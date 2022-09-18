@@ -1,7 +1,7 @@
 export const saveState = (state) => {
   try {
     const serialState = JSON.stringify(state);
-    localStorage.getItem("FavoritesList", serialState);
+    localStorage.getItem("favorites", serialState);
     // console.log(serialState);
     if (serialState === null) {
       return undefined;
@@ -36,7 +36,7 @@ export const loadState = () => {
   // };
   //   console.log(FavToStorage);
   try {
-    const serialState = localStorage.getItem("FavoritesList");
+    const serialState = localStorage.getItem("persist:root");
     if (serialState === null) {
       return undefined;
     }
