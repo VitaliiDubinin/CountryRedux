@@ -13,20 +13,11 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
   } else {
     contpop = (population / 1000).toFixed(1) + " K";
   }
-  // const jso = JSON.stringify(favorite);
-  // console.log(data.cca2, favorite.favorite);
-  // console.log(favorite);
-  const arr = { ...favorite };
-  // const favoriteb = arr.favorite.toString();
-  // console.log(arr.favorite);
 
-  // const [favorit, setFavorit] = useState();
-  // setFavorit(favorite.favorite);
+  const arr = { ...favorite };
 
   const dispatch = useDispatch();
   const addFav = (e) => {
-    // console.log("FavAdded");
-    // console.log(e);
     dispatch(addFavorites(e));
   };
 
@@ -41,10 +32,7 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
   `;
 
   return (
-    // <div className="card">
     <Card direction="column" height="24rem" width="30rem" background="light-5" border={{ color: "brand", size: "small" }} gap="xsmall">
-      {/* <LinkContainer to={`/countries/${country.name.common}`} state={{ country: country }}> */}
-      {/* <CardHeader alignContent="start" alignSelf="end" pad="1px"> */}
       <CardHeader pad="1px">
         <Text size="2rem">
           {" "}
@@ -81,7 +69,6 @@ const CountryCard = ({ capital, flag, name, languages, population, currencies, c
         </Link>
         <Button icon={<ShareOption color="plain" />} hoverIndicator />
       </CardFooter>
-      {/* </LinkContainer> */}
     </Card>
   );
 };

@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-// import { Box, Card, CardBody, Image, Text, Grid, ResponsiveContext } from "grommet";
+
 import { Card, CardBody, Image, Text } from "grommet";
 
-// import React, { useContext } from "react";
 import { Box, Grid, Heading, Main, ResponsiveContext, Page, PageContent, PageHeader } from "grommet";
 import { AppContainer } from "../components/dashboard/AppContainer";
 import { ContentArea } from "../components/dashboard/ContentArea";
@@ -12,7 +11,7 @@ import { FirmwareBaselines } from "../components/dashboard/FirmwareBaselines";
 import { FirmwareStatus } from "../components/dashboard/FirmwareStatus";
 import { RecentActivity } from "../components/dashboard/RecentActivity";
 import { ServerAttention } from "../components/dashboard/ServerAttention";
-import { ServerHealth } from "../components/dashboard/ServerHealth";
+
 import { UpdatesAvaliable } from "../components/dashboard/UpdatesAvaliable";
 
 const randApiHead = "https://picsum.photos/500/400";
@@ -26,93 +25,6 @@ const count_words = (word_array) => {
 };
 
 const CountrySingle = () => (
-  // const CountrySingle = () => {
-  //   let randImage = randApiHead;
-  //   const location = useLocation();
-  //   const country = location.state.data;
-
-  //   const [capgeo, setCapgeo] = useState({});
-  //   const [geotoweather, setGeotoweather] = useState({});
-
-  //   const [capweather, setCapweather] = useState([]);
-  //   const [capparam, setCapparam] = useState([]);
-  //   const [feelslike, setFeelslike] = useState([]);
-
-  //   const [loading, setLoading] = useState(false);
-
-  //   const size = useContext(ResponsiveContext);
-
-  //   useEffect(() => {
-  //     axios
-  //       .get("http://api.openweathermap.org/geo/1.0/direct?q=" + country.capital + "&limit=1&appid=7ba6687b19a6e5271e98d0f410014678")
-  //       .then((response) => {
-  //         setCapgeo(response.data[0]);
-  //         return response.data[0];
-  //       })
-
-  //       .then(async (capgeo) => {
-  //         await axios
-  //           .get(
-  //             "https://api.openweathermap.org/data/2.5/weather?lat=" +
-  //               capgeo.lat +
-  //               "&lon=" +
-  //               capgeo.lon +
-  //               "&appid=7ba6687b19a6e5271e98d0f410014678&units=metric"
-  //           )
-  //           .then((res) => {
-  //             setGeotoweather(capgeo);
-  //             setCapweather(res.data);
-  //             setCapparam(res.data.main);
-  //             console.log(res.data.main.feels_like);
-  //             setFeelslike(Math.floor(res.data.main.feels_like, 2));
-  //             let randImage = randApiHead;
-
-  //             console.log(randImage);
-  //           });
-  //       });
-  //   }, []);
-
-  //   return (
-  //     <Box
-  //       background="background"
-  //       justify="center"
-  //       align="center"
-  //       pad={{
-  //         vertical: "xlarge",
-  //       }}
-  //       flex={false}
-  //     >
-  //       <Card background="background-front" width="medium">
-  //         <Box height="small" width="medium">
-  //           <Image className="flagsq" src={randImage} alt={country.name.common} fit="cover" />
-  //         </Box>
-  //         <CardBody gap="small">
-  //           <Box gap="medium">
-  //             {" "}
-  //             <Text color="text-strong" size="xxlarge" weight="bold">
-  //               Weather in <span className="capname">{country.capital}</span>
-  //             </Text>
-  //             <Text color="text-strong" size="2rem" height="3rem">
-  //               {" "}
-  //               Temperature: <span className="capname">{capparam.temp}</span>
-  //             </Text>
-  //             <Text color="text-strong" size="2rem" height="3rem">
-  //               {" "}
-  //               Temp. feels like: <span className="capname">{feelslike}</span>
-  //             </Text>
-  //             <Text color="text-strong" size="2rem" height="3rem">
-  //               {" "}
-  //               Humidity:<span className="capname">{capparam.humidity}</span>
-  //             </Text>
-  //           </Box>
-  //         </CardBody>
-  //       </Card>
-  //     </Box>
-  //   );
-  // };
-  // export default CountrySingle;
-
-  // const CountrySingle = () => (
   <AppContainer background="background-back">
     <ContentArea title="Global Header" />
     <Page>
@@ -184,12 +96,10 @@ const secondChildGrid = {
 };
 
 const Content = () => {
-  // const size = useContext(ResponsiveContext);
-
   let randImage = randApiHead;
   const location = useLocation();
   const country = location.state.data;
-  console.log(country);
+  // console.log(country);
 
   const [capgeo, setCapgeo] = useState({});
   const [geotoweather, setGeotoweather] = useState({});
@@ -223,11 +133,11 @@ const Content = () => {
             setGeotoweather(capgeo);
             setCapweather(res.data);
             setCapparam(res.data.main);
-            console.log(res.data.main.feels_like);
+            // console.log(res.data.main.feels_like);
             setFeelslike(Math.floor(res.data.main.feels_like, 2));
             let randImage = randApiHead;
 
-            console.log(randImage);
+            // console.log(randImage);
           });
       });
   }, []);
@@ -242,17 +152,6 @@ const Content = () => {
               Weather in {country.capital}
             </Heading>
             <Grid columns={firstChildGrid.columns[size]} gap={firstChildGrid.gap}>
-              {/* <ServerHealth background="background-front" /> */}
-              {/* <ServerHealth background="background-front"> */}
-              {/* <Box
-                background="background"
-                justify="center"
-                align="center"
-                pad={{
-                  vertical: "xlarge",
-                }}
-                flex={false}
-              > */}
               <Card background="background-front" width="medium">
                 <Box height="small" width="medium">
                   <Image className="flagsq" src={randImage} alt={country.name.common} fit="cover" />
@@ -260,9 +159,6 @@ const Content = () => {
                 <CardBody gap="small">
                   <Box gap="medium">
                     {" "}
-                    {/* <Text color="text-strong" size="xxlarge" weight="bold">
-                        Weather in <span className="capname">{country.capital}</span>
-                      </Text> */}
                     <Text color="text-strong" size="2rem" height="3rem">
                       {" "}
                       Temperature: <span className="capname">{capparam.temp}</span>
@@ -278,8 +174,6 @@ const Content = () => {
                   </Box>
                 </CardBody>
               </Card>
-              {/* </Box> */}
-              {/* </ServerHealth> */}
 
               <ServerAttention background="background-front" />
             </Grid>
@@ -295,11 +189,6 @@ const Content = () => {
             </Grid>
           </Box>
         </Box>
-        {/* {!["xsmall", "small"].includes(size) && (
-          <Box gap="large">
-            <RecentActivity />
-          </Box>
-        )} */}
 
         <Card background="background-front" width="medium">
           <Heading level={2} size="small" margin="none">
@@ -311,9 +200,6 @@ const Content = () => {
           <CardBody gap="small">
             <Box gap="medium">
               {" "}
-              {/* <Text color="text-strong" size="xxlarge" weight="bold">
-                        Weather in <span className="capname">{country.capital}</span>
-                      </Text> */}
               <Text color="text-strong" size="2rem" height="3rem">
                 {" "}
                 Capital: <span className="capname">{country.capital}</span>

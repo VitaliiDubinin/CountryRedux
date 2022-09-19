@@ -6,12 +6,8 @@
 
 import React, { useEffect, useState, useContext, useMemo } from "react";
 import CountryCard from "./CountryCard";
-
 import SearchGlob from "./Search";
-
-// import axios from "axios";
-import { Grid, WorldMap, TextInput, Box, Button, ResponsiveContext, Text } from "grommet";
-import { Search as SearchIcon } from "grommet-icons";
+import { Grid, TextInput, Box, ResponsiveContext } from "grommet";
 import styled from "styled-components";
 import { defaultUser } from "./grom/UserContext";
 import { GlobalHeader } from "./grom/GlobalHeader";
@@ -22,21 +18,19 @@ import { DemoPageContent } from "./grom/DemoPageContent";
 import { useDispatch, useSelector } from "react-redux";
 import { initCountries, search } from "../features/countries/countriesSlice";
 
-// import { loadState, saveState } from "./localStorage";
-
 const StyledTextInput = styled(TextInput).attrs(() => ({
   "aria-labelledby": "search-icon",
 }))``;
 
 const Countries = () => {
   const dispatch = useDispatch();
-  // const countriesList = useSelector((state) => state.countries (!store name!).countries (!reducer name!));
+
   const countriesList = useSelector((state) => state.countries.countries);
   const loading = useSelector((state) => state.countries.isLoading);
   const searchInput = useSelector((state) => state.countries.search);
   const Favarray = useSelector((state) => state.favorites.favlist);
 
-  console.log(Favarray.length);
+  //   console.log(Favarray.length);
 
   const favnum = Favarray.length;
   const size = useContext(ResponsiveContext);
@@ -62,24 +56,15 @@ const Countries = () => {
     dispatch(search(e.target.value));
   };
 
-  //   const favoriteList = countriesList.map((scount) => Favarray.filter((fav) => fav.item === scount.name.common));
+  const favor = "testTT";
+  console.log(favor);
 
-  //   const favoriteList = countriesList.filter((scount) => scount.name.common === "Bulgaria");
   const favs = Favarray.map((fav) => fav.item);
-  console.log(favs);
+  //   console.log(favs);
 
   const favoriteList = countriesList.filter((scount) => favs.includes(scount.name.common));
-  //   const favoriteList = countriesList.filter((scount) => Favarray.map((fav) => fav.item === scount.name.common));
 
-  console.log(favoriteList);
-
-  //   const favor = favoriteList.filter((count) => count.length === 1);
-  //   console.log(favor);
-  //    {countryFilter.map((scount) => (
-  //     <CountryCard
-  //       key={countryFilter.indexOf(scount)}
-  //       data={scount}
-  //       favorite={Favarray.find((fav) => fav.item === scount.name.common)}
+  //   console.log(favoriteList);
 
   const countryFilter = favoriteList.filter((res) => {
     return res.name.common.toLowerCase().includes(searchInput.toLowerCase());
@@ -104,8 +89,8 @@ const Countries = () => {
             >
               {user ? (
                 <Box gap="large">
-                  {/* <Greeting favor={favorgret} /> */}
-                  <h1>Favorite countires list </h1>
+                  <Greeting favor={favor} />
+                  {/* <h1>Favorite countires list </h1> */}
 
                   <SearchGlob />
 

@@ -3,9 +3,8 @@ import CountryCard from "./CountryCard";
 
 import SearchGlob from "./Search";
 
-// import axios from "axios";
 import { Grid, WorldMap, TextInput, Box, Button, ResponsiveContext, Text } from "grommet";
-import { Search as SearchIcon } from "grommet-icons";
+
 import styled from "styled-components";
 import { defaultUser } from "./grom/UserContext";
 import { GlobalHeader } from "./grom/GlobalHeader";
@@ -15,8 +14,6 @@ import { DemoPageContent } from "./grom/DemoPageContent";
 
 import { useDispatch, useSelector } from "react-redux";
 import { initCountries, search } from "../features/countries/countriesSlice";
-
-// import { loadState, saveState } from "./localStorage";
 
 const StyledTextInput = styled(TextInput).attrs(() => ({
   "aria-labelledby": "search-icon",
@@ -52,15 +49,13 @@ const Countries = () => {
   // ];
 
   const dispatch = useDispatch();
-  // const countriesList = useSelector((state) => state.countries (!store name!).countries (!reducer name!));
+
   const countriesList = useSelector((state) => state.countries.countries);
   const loading = useSelector((state) => state.countries.isLoading);
   const searchInput = useSelector((state) => state.countries.search);
   const Favarray = useSelector((state) => state.favorites.favlist);
 
-  console.log(Favarray.length);
-
-  const favnum = Favarray.length;
+  // const favnum = Favarray.length;
   const size = useContext(ResponsiveContext);
   const [user, setUser] = useState(defaultUser);
 
@@ -77,30 +72,13 @@ const Countries = () => {
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("persist:root")).favorites;
 
-    // const obj = JSON.parse(items);
-    // const favj = obj.favorites;
-    // console.log(items);
-    // const res = JSON.stringify(items);
-    // console.log(res);
-    // const fav = JSON.parse(res).favlist;
-    // console.log(res);
-
     if (items) {
-      // console.log(items);
       setItems(items);
     }
     dispatch(initCountries());
   }, [dispatch]);
 
-  // console.log({ ...items });
-  // const fes = Object.value(items);
-  // console.log(items.favorites);
-  // console.log(...items);
-  // console.log(items[0]);
-
   const searchHandler = (e) => {
-    // console.log(e.target.value);
-    // setSearch(e.target.value);
     dispatch(search(e.target.value));
   };
 
@@ -152,16 +130,6 @@ const Countries = () => {
                   />
 
                   <SearchGlob />
-                  {/* <Box background="background-contrast" round="xsmall" width="medium" alignSelf="center">
-                    <StyledTextInput
-                      icon={<SearchIcon id="search-icon" color="placeholder" />}
-                      placeholder="Search"
-                      reverse
-                      value={searchInput}
-                      onChange={searchHandler}
-                      type="search"
-                    />
-                  </Box> */}
 
                   <Grid columns={!["xsmall", "small"].includes(size) ? "medium" : "100%"} rows={[["auto", "full"]]} gap="medium" fill>
                     {countryFilter.map((scount) => (
@@ -185,6 +153,5 @@ const Countries = () => {
     );
   }
 };
-// }
 
 export default Countries;

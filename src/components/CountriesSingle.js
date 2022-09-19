@@ -4,21 +4,6 @@ import { useLocation } from "react-router-dom";
 
 import { Box, Card, CardBody, Image, Text } from "grommet";
 
-// import { Box, ResponsiveContext } from "grommet";
-
-// const CountriesSingle = () => {
-//   const location = useLocation();
-//   const country = location.state.country;
-//   return <div>Single</div>;
-//   return <div>Single</div>;
-// };
-
-// export default CountriesSingle;
-
-// {
-//   /* <Button onClick={()=>Navigate('/countries')}/> */
-// }
-
 const randApiHead = "https://picsum.photos/500/400";
 
 const count_words = (word_array) => {
@@ -30,7 +15,6 @@ const count_words = (word_array) => {
 };
 
 const CountriesSingle = () => {
-  // const CountrySingle = () => {
   let randImage = randApiHead;
   const location = useLocation();
   const country = location.state.data;
@@ -41,10 +25,6 @@ const CountriesSingle = () => {
   const [capweather, setCapweather] = useState([]);
   const [capparam, setCapparam] = useState([]);
   const [feelslike, setFeelslike] = useState([]);
-
-  // const [loading, setLoading] = useState(false);
-
-  // const size = useContext(ResponsiveContext);
 
   useEffect(() => {
     axios
@@ -70,8 +50,6 @@ const CountriesSingle = () => {
             // console.log(res.data.main.feels_like);
             setFeelslike(Math.floor(res.data.main.feels_like, 2));
             let randImage = randApiHead;
-
-            // console.log(randImage);
           });
       });
   }, []);
