@@ -4,8 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { Avatar, Box, Button, DropButton, Nav, ResponsiveContext, Text } from "grommet";
 import { HelpOption, HomeRounded, Favorite } from "grommet-icons";
 import { UserContext } from "./UserContext";
+import { useSelector } from "react-redux";
 
 export const HeaderNav = () => {
+  // console.log(favnav);
+  const Favarray = useSelector((state) => state.favorites.favlist);
+  const favnum = Favarray.length;
+
   const size = useContext(ResponsiveContext);
   const { user } = useContext(UserContext);
   const [open, setOpen] = useState();
@@ -26,7 +31,7 @@ export const HeaderNav = () => {
         <>
           <Button icon={<HelpOption />} a11yTitle="Help" title="Help" onClick={navigateDashboard} />
           <Button icon={<HomeRounded />} a11yTitle="Home" title="Home" onClick={navigateHome} />
-          <Button icon={<Favorite />} a11yTitle="Home" title="Home" onClick={navigateFavorites} label="5" />
+          <Button icon={<Favorite />} a11yTitle="Home" title="Home" onClick={navigateFavorites} label={favnum} />
         </>
       )}
       <DropButton

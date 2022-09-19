@@ -23,41 +23,44 @@ const StyledTextInput = styled(TextInput).attrs(() => ({
 }))``;
 
 const Countries = () => {
-  let Favarray = [
-    {
-      id: "2022-09-17T17:17:44.240Z",
-      item: "Guadeloupe",
-      favorite: "true",
-    },
-    {
-      id: "2022-09-17T17:17:47.599Z",
-      item: "Mali",
-      favorite: "true",
-    },
-    {
-      id: "2022-09-17T17:17:51.447Z",
-      item: "Saint Helena, Ascension and Tristan da Cunha",
-      favorite: "true",
-    },
-    {
-      id: "2022-09-17T17:19:47Z",
-      item: "Finland",
-      favorite: "true",
-    },
-    {
-      id: "2022-09-17T17:18:47Z",
-      item: "Bulgaria",
-      favorite: "",
-    },
-  ];
+  // let Favarray = [
+  //   {
+  //     id: "2022-09-17T17:17:44.240Z",
+  //     item: "Guadeloupe",
+  //     favorite: "true",
+  //   },
+  //   {
+  //     id: "2022-09-17T17:17:47.599Z",
+  //     item: "Mali",
+  //     favorite: "true",
+  //   },
+  //   {
+  //     id: "2022-09-17T17:17:51.447Z",
+  //     item: "Saint Helena, Ascension and Tristan da Cunha",
+  //     favorite: "true",
+  //   },
+  //   {
+  //     id: "2022-09-17T17:19:47Z",
+  //     item: "Finland",
+  //     favorite: "true",
+  //   },
+  //   {
+  //     id: "2022-09-17T17:18:47Z",
+  //     item: "Bulgaria",
+  //     favorite: "",
+  //   },
+  // ];
 
   const dispatch = useDispatch();
   // const countriesList = useSelector((state) => state.countries (!store name!).countries (!reducer name!));
   const countriesList = useSelector((state) => state.countries.countries);
   const loading = useSelector((state) => state.countries.isLoading);
   const searchInput = useSelector((state) => state.countries.search);
-  const favoriteList = useSelector((state) => state.favorites.favlist);
+  const Favarray = useSelector((state) => state.favorites.favlist);
 
+  console.log(Favarray.length);
+
+  const favnum = Favarray.length;
   const size = useContext(ResponsiveContext);
   const [user, setUser] = useState(defaultUser);
 
@@ -73,7 +76,17 @@ const Countries = () => {
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("persist:root")).favorites;
+
+    // const obj = JSON.parse(items);
+    // const favj = obj.favorites;
+    // console.log(items);
+    // const res = JSON.stringify(items);
+    // console.log(res);
+    // const fav = JSON.parse(res).favlist;
+    // console.log(res);
+
     if (items) {
+      // console.log(items);
       setItems(items);
     }
     dispatch(initCountries());
@@ -81,7 +94,9 @@ const Countries = () => {
 
   // console.log({ ...items });
   // const fes = Object.value(items);
-  console.log(items);
+  // console.log(items.favorites);
+  // console.log(...items);
+  // console.log(items[0]);
 
   const searchHandler = (e) => {
     // console.log(e.target.value);

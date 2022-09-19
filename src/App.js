@@ -32,8 +32,8 @@ const theme = {
 };
 const RouterWrapper = (props) => {
   const params = useParams();
-  return <CountriesSingle params={params} {...props} />;
-  // return <CountrySingle params={params} {...props} />;
+  // return <CountriesSingle params={params} {...props} />;
+  return <CountrySingle params={params} {...props} />;
   // return <TwoColumnDashboard params={params} {...props} />;
 };
 

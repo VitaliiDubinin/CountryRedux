@@ -9,10 +9,10 @@ export const cartSlice = createSlice({
   reducers: {
     addFavorites(state, action) {
       state.favorites = action.payload;
-      console.log(action.payload);
+      //   console.log(action.payload);
 
       const inFav = state.favlist.find((coun) => coun.item === action.payload);
-      console.log(inFav);
+      //   console.log(inFav);
       if (!inFav) {
         state.favlist.push({
           id: new Date().toISOString(),
@@ -20,7 +20,7 @@ export const cartSlice = createSlice({
           favorite: "true",
         });
       } else {
-        console.log("doubled===removed");
+        // console.log("doubled===removed");
 
         state.favlist = state.favlist.filter((coun) => coun.item !== action.payload);
       }

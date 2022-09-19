@@ -51,6 +51,9 @@ const Home = () => {
                 <Link to="/countries">
                   <div>COUNTRIES</div>
                 </Link>
+                <Link to="/favorites">
+                  <div>FAVORITES</div>
+                </Link>
               </Box>
 
               {/* {size !== "small" && ( */}
