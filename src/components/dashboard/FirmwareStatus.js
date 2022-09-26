@@ -36,7 +36,8 @@ export const FirmwareStatus = ({ ...rest }) => {
 
   return (
     <StatusBar
-      title="Firmware Status"
+      // title="Firmware Status"
+      title="Snipet for future project"
       menuItems={[
         { label: "Move", onClick: () => {} },
         { label: "Share", onClick: () => {} },

@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Avatar, Box, Button, Header, Footer, Layer, Nav, ResponsiveContext, Text } from "grommet";
 import { Aruba, FormClose, Menu } from "grommet-icons";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 // const navigate = useNavigate();
 // const navigateHome = () => {
@@ -71,10 +72,19 @@ const SidebarHeader = () => (
 
 const SidebarNav = () => (
   <Nav a11yTitle="Sidebar Navigation">
-    <NavButton label="Home" navigate="/" />
-    <NavButton label="My Apps" navigate="google.com" />
-    <NavButton label="App Catalog" />
-    <NavButton label="Manage" />
+    {/* <NavButton label="Home" navigate="/" /> */}
+    {/* <NavButton label="Home" /> */}
+    <Link to="/">
+      {/* <div>HOME</div> */}
+      <NavButton label="Home" navigate="/" />
+    </Link>
+    <Link to="/countries">
+      <NavButton label="Countries" navigate="google.com" />
+    </Link>
+    <Link to="/favorites">
+      <NavButton label="Favorites" />
+    </Link>
+    {/* <NavButton label="Manage" /> */}
   </Nav>
 );
 

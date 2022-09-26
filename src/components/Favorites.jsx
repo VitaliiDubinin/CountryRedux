@@ -7,8 +7,9 @@
 import React, { useEffect, useState, useContext, useMemo } from "react";
 import CountryCard from "./CountryCard";
 import SearchGlob from "./Search";
-import { Grid, TextInput, Box, ResponsiveContext } from "grommet";
-import styled from "styled-components";
+// import { Grid, TextInput, Box, ResponsiveContext } from "grommet";
+import { Grid, Box, ResponsiveContext } from "grommet";
+// import styled from "styled-components";
 import { defaultUser } from "./grom/UserContext";
 import { GlobalHeader } from "./grom/GlobalHeader";
 import { UserContext } from "./grom/UserContext";
@@ -16,11 +17,12 @@ import { Greeting } from "./grom/Greeting";
 import { DemoPageContent } from "./grom/DemoPageContent";
 
 import { useDispatch, useSelector } from "react-redux";
-import { initCountries, search } from "../features/countries/countriesSlice";
+// import { initCountries, search } from "../features/countries/countriesSlice";
+import { initCountries } from "../features/countries/countriesSlice";
 
-const StyledTextInput = styled(TextInput).attrs(() => ({
-  "aria-labelledby": "search-icon",
-}))``;
+// const StyledTextInput = styled(TextInput).attrs(() => ({
+//   "aria-labelledby": "search-icon",
+// }))``;
 
 const Countries = () => {
   const dispatch = useDispatch();
@@ -32,13 +34,13 @@ const Countries = () => {
 
   //   console.log(Favarray.length);
 
-  const favnum = Favarray.length;
+  // const favnum = Favarray.length;
   const size = useContext(ResponsiveContext);
   const [user, setUser] = useState(defaultUser);
 
-  const favorgret = "This is Favorite PAGE";
+  // const favorgret = "This is Favorite PAGE";
 
-  const [items, setItems] = useState([]);
+  // const [items, setItems] = useState([]);
 
   const contextValue = useMemo(
     () => ({
@@ -52,12 +54,12 @@ const Countries = () => {
     dispatch(initCountries());
   }, [dispatch]);
 
-  const searchHandler = (e) => {
-    dispatch(search(e.target.value));
-  };
+  // const searchHandler = (e) => {
+  //   dispatch(search(e.target.value));
+  // };
 
-  const favor = "testTT";
-  console.log(favor);
+  const favor = "That is Favorite Page";
+  // console.log(favor);
 
   const favs = Favarray.map((fav) => fav.item);
   //   console.log(favs);

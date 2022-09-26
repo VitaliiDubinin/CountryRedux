@@ -31,7 +31,8 @@ export const UpdatesAvaliable = () => {
       ]}
       // background="validation-warning"
       background="background-front"
-      title="Updates Available!"
+      // title="Updates Available!"
+      title="Snipet for future project"
     >
       {updates && (
         <UpdateNotificationsList

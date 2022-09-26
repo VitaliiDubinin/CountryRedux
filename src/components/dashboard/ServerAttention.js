@@ -33,7 +33,8 @@ export const ServerAttention = () => {
   return (
     <StatusBar
       background="background-front"
-      title="Needs Attention"
+      // title="Server Attention"
+      title="Snipet for future project"
       menuItems={[
         { label: "Move", onClick: () => {} },
         { label: "Share", onClick: () => {} },

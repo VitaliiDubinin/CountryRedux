@@ -41,7 +41,8 @@ export const FirmwareBaselines = ({ ...rest }) => {
 
   return (
     <ItemCountList
-      title="Firmware Baselines"
+      // title="Firmware Baselines"
+      title="Snipet for future project"
       items={baselineCounts}
       menuItems={[
         { label: "Move", onClick: () => {} },
