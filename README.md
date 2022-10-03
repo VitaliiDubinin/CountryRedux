@@ -5,6 +5,7 @@ that is clone of my CountryApp, refactoring to Redux
 it deploys https://countryapphvd.herokuapp.com
 
 - git clone https://github.com/VitaliiDubinin/CountryRedux.git
+- cd CountryRedux
 - npm install
 - npm start
 
