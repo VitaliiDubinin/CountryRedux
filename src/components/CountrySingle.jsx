@@ -10,7 +10,7 @@ import { ContentArea } from "./dashboard/ContentArea";
 import { FirmwareBaselines } from "./dashboard/FirmwareBaselines";
 import { FirmwareStatus } from "./dashboard/FirmwareStatus";
 import { RecentActivity } from "./dashboard/RecentActivity";
-import { CountriesCodes } from "./CountriesCodes";
+// import { CountriesCodes } from "./CountriesCodes";
 import { ServerAttention } from "./dashboard/ServerAttention";
 
 import { UpdatesAvaliable } from "./dashboard/UpdatesAvaliable";
@@ -109,7 +109,7 @@ const Content = () => {
   const [capparam, setCapparam] = useState([]);
   const [feelslike, setFeelslike] = useState([]);
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const size = useContext(ResponsiveContext);
 
@@ -136,7 +136,7 @@ const Content = () => {
             setCapparam(res.data.main);
             // console.log(res.data.main.feels_like);
             setFeelslike(Math.floor(res.data.main.feels_like, 2));
-            let randImage = randApiHead;
+            // let randImage = randApiHead;
 
             // console.log(randImage);
           });

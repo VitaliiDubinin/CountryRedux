@@ -1,7 +1,10 @@
-import React, { useEffect, useState, useContext, useMemo } from "react";
+import React from "react";
+// import React, { useEffect, useState, useContext, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { initCountries, search } from "../features/countries/countriesSlice";
-import { Grid, WorldMap, TextInput, Box, Button, ResponsiveContext, Text } from "grommet";
+// import { initCountries, search } from "../features/countries/countriesSlice";
+import { search } from "../features/countries/countriesSlice";
+import { TextInput, Box } from "grommet";
+// import { Grid, WorldMap, TextInput, Box, Button, ResponsiveContext, Text } from "grommet";
 import { Search as SearchIcon } from "grommet-icons";
 import styled from "styled-components";
 

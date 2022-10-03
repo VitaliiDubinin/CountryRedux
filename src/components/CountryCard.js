@@ -1,11 +1,16 @@
-import React, { Component, useState } from "react";
+import React from "react";
+// import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
-import { Box, ThemeContext, grommet, Card, CardHeader, CardBody, CardFooter, Button, Text } from "grommet";
-import { Favorite, ShareOption, base, Apple, Filter } from "grommet-icons";
-import { useSelector, useDispatch } from "react-redux";
+// import { Box, ThemeContext, grommet, Card, CardHeader, CardBody, CardFooter, Button, Text } from "grommet";
+import { Card, CardHeader, CardBody, CardFooter, Button, Text } from "grommet";
+// import { Favorite, ShareOption, base, Apple, Filter } from "grommet-icons";
+import { Favorite, ShareOption } from "grommet-icons";
+// import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addFavorites } from "../features/countries/cartSlice";
-import styled, { css, ThemeProvider } from "styled-components";
-import { deepMerge } from "grommet-icons/utils";
+// import styled, { css, ThemeProvider } from "styled-components";
+import styled, { css } from "styled-components";
+// import { deepMerge } from "grommet-icons/utils";
 
 const CountryCard = ({ capital, flag, name, languages, population, currencies, contpop, idnum, data, favorite }) => {
   if (population >= 1000000) {

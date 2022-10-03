@@ -1,9 +1,10 @@
-import React, { useContext, useMemo, useState } from "react";
-import { Box, Button, ResponsiveContext, Text } from "grommet";
-import { AppIdentity } from "./AppIdentity";
-import { HeaderNav } from "./HeaderNav";
+import React, { useContext } from "react";
+// import React, { useContext, useMemo, useState } from "react";
+// import { Box, Button, ResponsiveContext, Text } from "grommet";
+// import { AppIdentity } from "./AppIdentity";
+// import { HeaderNav } from "./HeaderNav";
 import { UserContext } from "./UserContext";
-import { defaultUser } from "./UserContext";
+// import { defaultUser } from "./UserContext";
 
 export const DemoPageContent = () => {
   //   const [user, setUser] = useState(defaultUser);

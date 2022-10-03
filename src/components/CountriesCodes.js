@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+// import { useState } from "react";
 import { CircleInformation, StatusWarning } from "grommet-icons";
 import { Measure } from "./Measure";
 import { StatusBar } from "./StatusBar";
 
-const MOCK_DATA = require("../components/dashboard/servers.json");
+// const MOCK_DATA = require("../components/dashboard/servers.json");
 
 // const CODES_MAP = {
 //   CCA2: {
@@ -22,8 +23,8 @@ const MOCK_DATA = require("../components/dashboard/servers.json");
 // };
 
 export const CountriesCodes = (cca2, cca3, ccn3) => {
-  const data = MOCK_DATA["serverState-counts"].counts;
-  const [connectionStatus, setConnectionStatus] = useState(undefined);
+  // const data = MOCK_DATA["serverState-counts"].counts;
+  // const [connectionStatus, setConnectionStatus] = useState(undefined);
 
   const CODES_MAP = {
     CCA2: {
@@ -43,14 +44,14 @@ export const CountriesCodes = (cca2, cca3, ccn3) => {
     },
   };
 
-  useEffect(() => {
-    const nextStatus = { ...CODES_MAP };
-    Object.keys(nextStatus).forEach((key) => {
-      // nextStatus[key].count = data[key];
-      nextStatus[key].count = CODES_MAP[key];
-    });
-    setConnectionStatus(nextStatus);
-  }, [data]);
+  // useEffect(() => {
+  //   const nextStatus = { ...CODES_MAP };
+  //   Object.keys(nextStatus).forEach((key) => {
+  //     // nextStatus[key].count = data[key];
+  //     nextStatus[key].count = CODES_MAP[key];
+  //   });
+  //   setConnectionStatus(nextStatus);
+  // }, [data]);
 
   return (
     <StatusBar

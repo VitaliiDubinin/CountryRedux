@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 // import "./App.css";
 import CountrySingle from "./components/CountrySingle";
-import CountriesSingle from "./components/CountriesSingle";
+// import CountriesSingle from "./components/CountriesSingle";
 import Layout from "./pages/Layout";
 import Home from "./components/Home";
 import Countries from "./components/Countries";
@@ -50,6 +50,7 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/dashboard" element={<TwoColumnDashboard />} />
             <Route path="/countries/:countrysingle" element={<RouterWrapper />} />
+            <Route path="/favorites/:countrysingle" element={<RouterWrapper />} />
             {/* <Route path="/addrecipe" element={<AddRecForm />} /> */}
           </Route>
         </Routes>

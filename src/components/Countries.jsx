@@ -3,9 +3,10 @@ import CountryCard from "./CountryCard";
 
 import SearchGlob from "./Search";
 
-import { Grid, WorldMap, TextInput, Box, Button, ResponsiveContext, Text } from "grommet";
+// import { Grid, WorldMap, TextInput, Box, Button, ResponsiveContext, Text } from "grommet";
+import { Grid, WorldMap, Box, ResponsiveContext } from "grommet";
 
-import styled from "styled-components";
+// import styled from "styled-components";
 import { defaultUser } from "./grom/UserContext";
 import { GlobalHeader } from "./grom/GlobalHeader";
 import { UserContext } from "./grom/UserContext";
@@ -13,11 +14,12 @@ import { Greeting } from "./grom/Greeting";
 import { DemoPageContent } from "./grom/DemoPageContent";
 
 import { useDispatch, useSelector } from "react-redux";
-import { initCountries, search } from "../features/countries/countriesSlice";
+// import { initCountries, search } from "../features/countries/countriesSlice";
+import { initCountries } from "../features/countries/countriesSlice";
 
-const StyledTextInput = styled(TextInput).attrs(() => ({
-  "aria-labelledby": "search-icon",
-}))``;
+// const StyledTextInput = styled(TextInput).attrs(() => ({
+//   "aria-labelledby": "search-icon",
+// }))``;
 
 const Countries = () => {
   // let Favarray = [
@@ -78,9 +80,9 @@ const Countries = () => {
     dispatch(initCountries());
   }, [dispatch]);
 
-  const searchHandler = (e) => {
-    dispatch(search(e.target.value));
-  };
+  // const searchHandler = (e) => {
+  //   dispatch(search(e.target.value));
+  // };
 
   const countryFilter = countriesList.filter((res) => {
     return res.name.common.toLowerCase().includes(searchInput.toLowerCase());
