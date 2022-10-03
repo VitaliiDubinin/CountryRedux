@@ -15,3 +15,8 @@ it deploys https://countryapphvd.herokuapp.com
 npm install redux react-redux
 npm install @reduxjs/toolkit
 npm i axios
+heroku login  
+heroku git:remote -a countryapphvd
+git push heroku master:main
+heroku buildpacks:set mars/create-react-app
+heroku stack:set heroku-20
