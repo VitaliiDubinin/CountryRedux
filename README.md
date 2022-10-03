@@ -2,10 +2,11 @@
 
 that is clone of my CountryApp, refactoring to Redux
 
+it deploys https://countryapphvd.herokuapp.com
+
 - git clone https://github.com/VitaliiDubinin/CountryRedux.git
 - npm install
 - npm start
-- http://localhost:3100
 
 ### Please take into accout, that project has not finished yet, I'm trying to conbine different features. It works for assignment. All main function work: countries, favorites, singlecard page. and some extras. For doing little bit easy to read a code - see the files with .jsx extensions in "components" folder.
 
